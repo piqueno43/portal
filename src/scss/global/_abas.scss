@@ -1,0 +1,48 @@
+/*abas conteúdo página*/
+
+.nav-tabs,
+.abas-personalizadas {
+    @include media-breakpoint-only(xs) {
+        .nav-item {
+            width: 100% !important;
+            text-align: center;
+            a {
+                &:hover {
+                    text-decoration: none !important;
+                }
+            }
+        }
+    }
+    border-bottom: 1px solid $cinza-claro;
+    margin-left: 0!important;
+    //padding-bottom: 4px;
+    .nav-item {
+        padding-bottom: 0 !important;
+        background: $cinza-claro;
+        margin-left: 2px;
+        font-size: 1.25rem !important;
+        margin-bottom: 4px;
+        margin-top: 4px;
+        list-style: none!important;
+        .active {
+            background: $theme-color-secundario;
+            color: $theme-color;
+            border-color: $amarelo-escuro;
+            font-weight: bold;
+        }
+        a {
+            color: $cinza;
+            @include paragrafo;
+            font-size: 1rem !important;
+            &:hover {
+                border-bottom: 1px solid $azul;
+                color: $azul!important;
+                text-decoration: none !important;
+            }
+            &:focus {
+                outline: none;
+                box-shadow: none;
+            }
+        }
+    }
+}

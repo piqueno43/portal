@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   enable-background="new 0 0 400.004 400.004"
+   version="1.1"
+   viewBox="0 0 400 400"
+   xml:space="preserve"
+   id="svg8"
+   sodipodi:docname="seta-baixo-hover.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"><defs
+   id="defs12" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1920"
+   inkscape:window-height="1004"
+   id="namedview10"
+   showgrid="false"
+   inkscape:zoom="0.59"
+   inkscape:cx="22.033898"
+   inkscape:cy="200"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg8" /><metadata
+   id="metadata2"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata>
+<g
+   transform="rotate(-90,200,200)"
+   id="g6"
+   style="fill:#47c77d;fill-opacity:1">
+	<path
+   d="M 382.69,182.69 H 59.12 l 77.209,-77.214 c 6.764,-6.76 6.764,-17.726 0,-24.485 -6.764,-6.764 -17.73,-6.764 -24.484,0 L 5.075,187.761 c -6.764,6.76 -6.764,17.727 0,24.485 l 106.77,106.78 c 3.381,3.383 7.812,5.072 12.242,5.072 4.43,0 8.861,-1.689 12.242,-5.072 6.764,-6.76 6.764,-17.726 0,-24.484 L 59.12,217.324 h 323.57 c 9.562,0 17.316,-7.753 17.316,-17.315 0,-9.562 -7.753,-17.314 -17.316,-17.314 z"
+   id="path4"
+   style="fill:#47c77d;fill-opacity:1"
+   inkscape:connector-curvature="0" />
+</g>
+</svg>

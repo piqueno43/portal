@@ -1,0 +1,106 @@
+.acessibilidade {
+    min-height: 35px;
+    align-items: center;
+    background-color: theme-color('azul');
+    @include make-col-ready();
+
+    @include media-breakpoint-only(xs) {
+        padding-right: 0;
+        padding-left: 0;
+        margin-right: 0;
+        margin-left: 0;
+
+        a {
+            font-size: 12px;
+        }
+    }
+
+    .atalhos {
+        @include media-breakpoint-up(xs) {
+            @include make-col(12);
+            // links a direita
+        }
+
+        @include media-breakpoint-up(lg) {
+            @include make-col(6);
+        }
+
+        a.acessibilidade__link {
+            &:focus {
+
+                &,
+                & span {
+                    color: theme-color('branco') !important;
+                }
+            }
+        }
+
+        ;
+
+        a.acessibilidade__link {
+            &:focus {
+
+                &,
+                & span {
+                    color: theme-color('branco') !important;
+                }
+            }
+        }
+
+        ;
+    }
+
+    .transparencia {
+        @include modificar(link) {
+            font-size: .79rem;
+        }
+
+        @include media-breakpoint-up(xs) {
+            @include make-col(12);
+            // padding-left: 0;
+            // padding-right: 0;
+            // margin-left: 0;
+            // margin-right: 0;
+
+
+        }
+
+        @include media-breakpoint-up(lg) {
+            @include make-col(6);
+        }
+
+        @include modificar('link') {
+            @extend .btn-link;
+            @extend .btn-sm;
+            color: theme-color('branco');
+
+            &:hover {
+                color: theme-color('branco');
+            }
+        }
+
+        .nav {
+            justify-content: flex-end;
+
+            .nav-item {
+                &::after {
+                    content: '|';
+                    float: right;
+                    color: $branco;
+                    margin-top: calc(10px - 5px);
+                }
+
+                &:last-child::after {
+                    display: none;
+                }
+
+                // &:nth-child(3) {
+                //     a {
+                //         border-right: 1px solid $azul-claro;
+                //         border-radius: inherit;
+                //     }
+                // }
+            }
+        }
+    }
+}

@@ -1,0 +1,264 @@
+$altura: 126px;
+
+#topo {
+    @include make-col-ready();
+
+    @include media-breakpoint-up(xs) {
+        height: 125px;
+    }
+
+    background-attachment: scroll;
+    // background-image: url("#{$path_img}/bg-topo-principal.png");
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-color: $primeira-cor-bg;
+    position: relative; //Celular
+
+    &,
+    a {
+        color: $gray-lighter;
+    }
+
+    .topo {
+        .logo {
+            max-height: 100px;
+
+            @include media-breakpoint-up(xs) {
+                @include make-col(5);
+                margin-top: 15px;
+            }
+
+            @include media-breakpoint-up(sm) {
+                @include make-col(8);
+            }
+
+            @include media-breakpoint-up(md) {
+                @include make-col(7);
+            }
+
+            @include media-breakpoint-up(lg) {
+                @include make-col(7);
+            }
+
+
+            &-tribunal {
+                @include media-breakpoint-up(sm) {
+                    @include make-col(4);
+                }
+
+                @include media-breakpoint-up(md) {
+                    @include make-col(4);
+                }
+
+                @include media-breakpoint-up(lg) {
+                    @include make-col(3);
+                }
+            }
+
+            &-descricao {
+                @include media-breakpoint-up(lg) {
+                    @include make-col(8);
+                }
+
+                top: -52px;
+                font-size: 1.2em;
+                line-height: $altura;
+                letter-spacing: 0.08em;
+                padding-top: $altura / 6; //Celular
+                border-left-color: $global-invert-bg;
+                border-left-style: solid;
+                border-left-width: 2px;
+
+                @include media-breakpoint-up(sm) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+#search {
+    &.pesquisa {
+
+        @include media-breakpoint-up(xs) {
+            @include make-col(7); //Celular
+            margin-top: 35px;
+        }
+
+        @include media-breakpoint-up(sm) {
+            @include make-col(4);
+            margin-top: 20px;
+        }
+
+        @include media-breakpoint-up(md) {
+            @include make-col(5);
+        }
+
+        @include media-breakpoint-up(lg) {
+            @include make-col(5);
+            margin-top: 40px;
+        }
+    }
+
+    &.affix {
+        display: inline-block;
+        padding: 0;
+        position: fixed;
+        z-index: $zindex-fixed; //Celular
+
+        @include media-breakpoint-up(xs) {
+            margin-left: -105px;
+            min-width: 210px;
+            top: -20px;
+        }
+
+        //Tablet
+        @include media-breakpoint-up(sm) {
+            margin-left: 0;
+            margin-top: 0;
+            right: 25px;
+            top: 10px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            margin-left: 125px;
+            width: 335px;
+            right: auto;
+            top: 15px;
+        }
+
+        #busca,
+        .btn {
+            font-size: 12px;
+            height: 30px;
+            line-height: 1.5;
+            padding: 5px 10px;
+        }
+
+        .busca-avancada {
+            display: none;
+        }
+
+        .exibir_secao {
+            bottom: -2px;
+            font-size: 0.75em;
+            height: 19px;
+        }
+    }
+}
+
+//sobrescreve topo para o tre
+body[class^="site-tre"] #topo .topo {
+    .logo {
+        &-descricao {
+            display: none;
+        }
+    }
+}
+
+.link-je {
+    width: 178px;
+    position: absolute;
+    right: 100%;
+    top: 0;
+    letter-spacing: $letter-space;
+    font-size: 0.85em;
+    // background-image: url("#{$path_img}/bg-link-je.png");
+    background-repeat: no-repeat;
+    background-position: top center;
+
+    @include media-breakpoint-up(sm) {
+        left: 40%;
+    }
+
+    @include media-breakpoint-up(lg) {
+        left: 50%;
+    }
+
+    >a {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+}
+
+#searchform {
+    #busca {
+        border-right: none;
+    }
+
+    button {
+        &.btn {
+            height: 34px;
+        }
+    }
+
+    .exibir_secao {
+        display: none;
+        bottom: 10px;
+        font-size: 0.9em;
+        position: absolute; //Celular
+
+        @include media-breakpoint-up(xs) {
+            bottom: -12px;
+            font-size: 0.9em;
+            height: 30px;
+            line-height: 12px;
+        }
+
+        label {
+            font-weight: normal !important;
+
+            @include media-breakpoint-up(xs) {
+                display: inline;
+            }
+        }
+    }
+
+    .busca-avancada {
+        @include media-breakpoint-up(xs) {
+            display: none;
+        }
+
+        @include media-breakpoint-up(lg) {
+            @include make-col(4);
+            @include make-col-offset(8);
+        }
+
+        margin-top: 5px;
+    }
+}
+
+.espaco-topo {
+    margin-top: 65px;
+}
+
+#campanhas-diversas {
+    position: absolute;
+    bottom: 0;
+
+    .campanha-laco {
+        position: absolute;
+        top: 15px;
+        z-index: 10;
+
+        @include media-breakpoint-up(xs) {
+            left: 5px;
+        }
+
+        @include media-breakpoint-up(sm) {
+            left: -25px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            left: 5px;
+        }
+    }
+}
+
+.espaco-topo {
+    #campanhas-diversas {
+        .campanha-laco {
+            top: -15px;
+        }
+    }
+}

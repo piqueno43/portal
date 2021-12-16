@@ -1,3 +1,4 @@
+// import 'bootstrap';
 async function foo() {
   const value = await bar();
   console.log(value);

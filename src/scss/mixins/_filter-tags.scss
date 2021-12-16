@@ -1,0 +1,27 @@
+@mixin filtro-tags($selector: "li") {
+    #{$selector} {
+        display: inline-block!important;
+        color: $cinza;
+        padding-top: 4px;
+        a {
+            font-weight: normal;
+            padding: 5px;
+            border: 1px solid $cinza-claro;
+            transition: 0.4s;
+        }
+        font-size: 12px;
+        background-color: transparent;
+        border-radius: 6%;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        margin-left: 4px;
+         :hover {
+            transition: 0.4s;
+            color: $dark;
+            text-decoration: none;
+            background-color: $theme-color-secundario;
+            box-shadow: $theme-shadow;
+        }
+    }
+    @content;
+}

@@ -1,0 +1,9 @@
+@mixin debug {
+  * {
+    color: hsla(210, 100%, 100%, 0.9) !important;
+    background: hsla(210, 100%, 50%, 0.5) !important;
+    outline: dashed 0.1rem hsla(210, 100%, 100%, 0.5) !important;
+    box-shadow: none !important;
+    @content;
+  }
+}

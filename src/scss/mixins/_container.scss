@@ -1,0 +1,31 @@
+$default: true;
+@mixin centralizar ($status: $default) {
+    @if $status==$default {
+        @include container-fixed;
+        @media (min-width: $screen-sm-min) {
+            width: $container-sm;
+        }
+        @media (min-width: $screen-md-min) {
+            width: $container-md;
+        }
+        @media (min-width: $screen-lg-min) {
+            width: $container-lg;
+        }
+    }
+    @else {
+        $width: auto;
+        $float: left;
+        @media (min-width: $screen-sm-min) {
+            width: $width;
+            float: $float;
+        }
+        @media (min-width: $screen-md-min) {
+            width: $width;
+            float: $float;
+        }
+        @media (min-width: $screen-lg-min) {
+            width: $width;
+            float: $float;
+        }
+    }
+}

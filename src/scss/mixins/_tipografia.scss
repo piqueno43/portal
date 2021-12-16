@@ -1,0 +1,80 @@
+@mixin font-weight($weight) {
+    $weights: (light: 300, normal: 400, semi-bold: 600, );
+    $output: $weight;
+    @if map-has-key($weights, $weight) {
+        $output: map-get($weights, $weight);
+    }
+    font-weight: $output;
+}
+
+@mixin paragrafo ($color: $theme-color-text) {
+    @include font-weight(normal);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+    color: $color;
+    a {
+        color: $theme-color-link;
+        text-decoration: none;
+        &:hover {
+            color: $theme-color-link-hover;
+        }
+    }
+}
+
+@mixin titulo-noticias($color:$branco) {
+    font-family: "Merriweather", sans-serif;
+    font-size: 2.25rem;
+    line-height: 3rem;
+    color: $color;
+    font-weight: 700;
+    @content;
+}
+
+@mixin sub-titulo($color:$azul) {
+    font-family: "Merriweather", sans-serif;
+    text-transform: uppercase;
+    font-size: 1.75rem;
+    line-height: 2.5rem;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: $color;
+}
+
+@mixin titulo-sidebar ($color: $theme-color) {
+    font-family: "Merriweather", sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    color: $color;
+    padding-left: 15px;
+    &:after {
+        content: "";
+        display: block;
+        background: $theme-color-secundario;
+        width: 30px;
+        height: 2px;
+        margin-top: 5px;
+        margin-bottom: 2px;
+    }
+    @content;
+}
+
+@mixin titulo-modal ($color: $theme-color) {
+    font-family: "Merriweather", sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    color: $color;
+    padding-left: 15px;
+}
+
+@mixin titulo-legislacao-compilada ($color: $theme-color) {
+    font-family: "Merriweather", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: $color;
+}
+
+@mixin titulos-organograma ($color: $theme-color) {
+    font-family: "Merriweather", sans-serif;
+    color: $color;
+}

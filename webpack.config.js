@@ -98,7 +98,11 @@ module.exports = {
     global: [
       path.resolve(config.paths.source, 'scripts', 'global.ts'),
       path.resolve(config.paths.source, 'scss', 'global.scss')
-    ]
+    ],
+    plugins: [
+      path.resolve(config.paths.source, 'scripts', 'plugins.ts'),
+      path.resolve(config.paths.source, 'scss', 'plugins.scss'),
+    ],
   },
   output: {
     path: config.paths.output,
@@ -147,7 +151,7 @@ module.exports = {
           {
             loader: 'ejs-webpack-loader',
             options: {
-              data: { title: 'New Title', someVar: 'hello world' },
+              data: { title: 'Tribunal Superior Eleitoral' },
               htmlmin: true
             }
           }
@@ -164,7 +168,9 @@ module.exports = {
               sourceMap: true
             }
           },
-          { loader: 'postcss-loader' },
+          {
+            loader: 'postcss-loader'
+          },
           {
             loader: 'sass-loader',
             options: {

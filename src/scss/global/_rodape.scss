@@ -1,0 +1,381 @@
+$medias-sociais: ('facebook', 'flickr', 'instagram', 'twitter', 'youtube', 'soundcloud', 'tiktok', 'linkedin');
+$icones-rodape: ('contato', 'email', 'feedback', 'twitter', 'horario', 'mapa', 'privacidade', 'protocolo', 'soundcloud');
+$font-size-rodape:1.125rem;
+
+.rodape {
+
+
+    .rodape__links {
+        margin-top: auto;
+
+        a {
+            @include paragrafo;
+            font-size: .9rem;
+            color: $branco;
+
+            &:hover {
+                background-color: transparent !important;
+                color: $amarelo;
+                text-decoration: none;
+
+            }
+        }
+    }
+
+    @include elemento('topo') {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    @include elemento('logo') {
+        @include make-col-ready();
+
+        @include media-breakpoint-up(xs) {
+            @include make-col(12);
+            text-align: center;
+            padding-bottom: 10px;
+
+        }
+
+        @include media-breakpoint-up(lg) {
+            @include make-col(2);
+        }
+    }
+
+    @include elemento('links') {
+        @include make-col-ready();
+
+        @include media-breakpoint-up(xs) {
+            @include make-col(12);
+            justify-content: center;
+        }
+
+        @include media-breakpoint-up(lg) {           
+
+            @include make-col(7);
+            &.sem-selos {
+                @include make-col(10);
+            }
+            justify-content: flex-start;
+        }
+    }
+
+
+
+    @include elemento('selos') {
+        margin-left: auto;
+        margin-right: 0;
+        @include make-col-ready();
+
+        @include media-breakpoint-up(xs) {
+            @include make-col(12);
+
+            .nav {
+                justify-content: center;
+            }
+
+        }
+
+        @include media-breakpoint-up(lg) {
+            @include make-col(3);
+
+            .nav {
+                justify-content: flex-end;
+                // selos a direita
+            }
+        }
+
+        a {
+            padding: 0 !important;
+        }
+    }
+
+    @include elemento('informacoes') {
+        @include make-col-ready();
+
+        @include media-breakpoint-up(xs) {
+            padding-top: $global-padding;
+            padding-bottom: $global-padding;
+        }
+
+        @include media-breakpoint-up(lg) {
+            padding-top: $global-padding * 2;
+            padding-bottom: $global-padding * 2;
+        }
+
+        background: url('#{$path_img}/bg-overlay-azul.png') repeat scroll 0 0,
+        url('#{$path_img}/bg-fachada-tse.png') no-repeat scroll 0 0;
+        background-size: cover;
+    }
+
+    margin-top: 20px;
+}
+
+.endereco {
+
+    @include make-col-ready();
+
+    @include media-breakpoint-up(lg) {
+        @include make-col(6);
+    }
+
+    * {
+        color: theme-color('branco');
+
+        &:hover {
+            color: theme-color('branco');
+        }
+
+        font-family: $font-family-menu;
+        // font-weight: lighter;
+        font-size: $font-size-rodape;
+    }
+
+
+
+    @include elemento('media') {
+        @include elemento('img') {
+            align-self: center;
+            margin-right: 20px;
+
+            @include media-breakpoint-down(xs) {
+                display: none;
+            }
+        }
+
+        @include modificar('linha') {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        padding-top: $global-padding / 2;
+        padding-bottom: $global-padding / 2;
+
+
+
+        &:not(:last-child()) {
+            border-bottom: 1px solid theme-color('branco');
+        }
+
+    }
+}
+
+
+
+.botoes {
+    @include make-col-ready();
+
+    @include media-breakpoint-up(lg) {
+        @include make-col(6);
+    }
+
+    @include elemento('redes-sociais') {
+        @include make-col-ready();
+        padding-top: $global-padding;
+        padding-bottom: $global-padding;
+
+        a.icon {
+            height: 36px;
+            width: 37px;
+
+
+            @each $media in $medias-sociais {
+                &.icon-#{$media} {
+                    background: url('#{$path_img}/footer/social/#{$media}.png') no-repeat 0 0 scroll;
+
+                    &:hover {
+                        background-image: url('#{$path_img}/footer/social/#{$media}-hover.png');
+                    }
+                }
+            }
+
+
+        }
+    }
+
+}
+
+
+.comunicacao-interna {
+    @include make-row();
+
+    @include elemento('botoes') {
+        @include make-col-ready();
+
+        @include media-breakpoint-up(lg) {
+            @include make-col(12);
+        }
+    }
+
+    @include elemento('item') {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+.aviso {
+    @include elemento('conteudo') {
+        font-family: $font-family-menu;
+        font-weight: $font-weight-normal;
+        padding-top: $global-padding/ 2;
+        padding-bottom: $global-padding/ 2;
+    }
+
+    @include elemento('texto') {
+        @include modificar('esquerda') {
+            text-align: left;
+        }
+
+        @include modificar('direita') {
+            text-align: right;
+        }
+
+        @include modificar('centro') {
+            text-align: center;
+        }
+    }
+
+    @include modificar('link') {
+        color: darken(theme-color('amarelo'), 50);
+        font-size: .875rem;
+    }
+
+    @include elemento(linha) {
+        @include make-row();
+    }
+}
+
+.mapa {
+    background-color: $amarelo;
+    $height-mapa: 79rem;
+
+    @include elemento(linha) {
+        @include make-row();
+    }
+
+    @include elemento(collapse) {
+        display: block;
+        height: 0;
+        overflow: hidden;
+        transition: height .5s cubic-bezier(0, 1, 0, 1);
+
+        &.show {
+            height: $height-mapa;
+            transition: height .5s ease-in-out;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+    }
+
+    @include elemento(card) {
+        @include card;
+        border: none;
+    }
+
+    @include elemento('card-header') {
+        @include card-header;
+        @include titulo-noticias;
+        font-size: 1.5rem;
+        background-color: $amarelo;
+    }
+
+    @include elemento('lista-grupo') {
+        @include list-group(flush);
+    }
+
+    @include elemento('lista-item') {
+        @include list-group-item(true);
+        background-color: $amarelo;
+
+        &:hover {
+            background-color: $amarelo-escuro;
+        }
+    }
+
+    @include item(navegacao) {
+        @include make-row();
+    }
+
+    // @include debug;
+    @include item(pesquisa) {
+        @include make-col-ready(0);
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: flex-end;
+        background-color: $amarelo;
+        z-index: 99;
+        box-shadow: 0px 15px 10px -20px #111;
+
+
+        @include item(form) {
+
+            @include make-col-ready();
+            @include make-col(9);
+            justify-content: flex-end;
+            display: flex;
+
+            &.fechado {
+                border-bottom: 3px solid $amarelo-escuro;
+                display: none;
+            }
+
+            &.aberto {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                display: block;
+            }
+        }
+
+        @include item(close) {
+            @include make-col-ready();
+            @include make-col(3);
+            justify-content: flex-end;
+            display: flex;
+
+            &.fechado {
+                height: 0;
+
+                @include media-breakpoint-down(xs) {
+                    @include make-col(12);
+                    @include make-col-ready();
+                    padding-left: 1.75rem;
+                    padding-right: 1.75rem;
+                    padding-top: 1rem;
+                    padding-bottom: 1rem;
+                    height: 80px;
+                    z-index: 0;
+                }
+
+                .mapa-acesso-botao {
+                    position: absolute;
+                    bottom: 5px;
+
+                    @include media-breakpoint-down(xs) {
+                        @include make-col(12);
+                        bottom: 0;
+                        position: relative;
+                    }
+                }
+            }
+
+            &.aberto {
+                .mapa-acesso-botao {
+                    position: absolute;
+                    bottom: 15px;
+                }
+            }
+        }
+    }
+
+    @include item(resultado) {
+        @include elemento(lista-grupo) {
+            @include list-group(flush);
+        }
+
+        @include elemento(lista-item) {
+            @include list-group-item(true);
+            background-color: $amarelo-escuro;
+        }
+    }
+}
