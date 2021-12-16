@@ -10,3 +10,4 @@ RUN yarn install
 COPY . .
 
 EXPOSE 8080
+

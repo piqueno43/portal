@@ -1,0 +1,232 @@
+@mixin add-social-pallet() {
+  @if map-has-key($social-media-pallet, facebook) {
+    $facebook-color: map-get($social-media-pallet, facebook) !global;
+  }
+
+  @if map-has-key($social-media-pallet, twitter) {
+    $twitter-color: map-get($social-media-pallet, twitter) !global;
+  }
+
+  @if map-has-key($social-media-pallet, google-plus) {
+    $google-plus-color: map-get($social-media-pallet, google-plus) !global;
+  }
+
+  @if map-has-key($social-media-pallet, youtube) {
+    $youtube-color: map-get($social-media-pallet, youtube) !global;
+  }
+
+  @if map-has-key($social-media-pallet, soundcloud) {
+    $soundcloud-color: map-get($social-media-pallet, soundcloud) !global;
+  }
+
+  @if map-has-key($social-media-pallet, instagram) {
+    $instagram-color: map-get($social-media-pallet, instagram) !global;
+  }
+
+  @if map-has-key($social-media-pallet, flickr) {
+    $flickr-color: map-get($social-media-pallet, flickr) !global;
+  }
+
+  @if map-has-key($social-media-pallet, envelope) {
+    $envelope-color: map-get($social-media-pallet, envelope) !global;
+  }
+
+  @if map-has-key($social-media-pallet, rss) {
+    $rss-color: map-get($social-media-pallet, rss) !global;
+  }
+}
+
+// para funcionar import  'node_modules/bootstrap/scss/list-group';
+@mixin list-group-horizontal {
+  @extend .list-group-horizontal;
+}
+
+@mixin list-group-flush {
+  @extend .list-group-flush;
+}
+
+@mixin list-group($type: flush) {
+  @extend .list-group;
+
+  @if $type==flush {
+    @include list-group-flush;
+  }
+
+  @if $type==horizontal {
+    @include list-group-horizontal;
+  }
+}
+
+@mixin list-group-item-action {
+  @extend .list-group-item-action;
+}
+
+@mixin list-group-item-color($color) {
+  @extend .list-group-item-#{$color};
+}
+
+@mixin list-group-item($action: false, $color-name: null) {
+  @extend .list-group-item;
+
+  @if $action==true {
+    @include list-group-item-action;
+  }
+
+  @if $color-name !=null {
+    &:hover {
+      @include list-group-item-color($color-name);
+    }
+  }
+}
+
+@mixin nav {
+  @extend .nav;
+}
+
+@mixin nav-tabs {
+  @extend .nav-tabs;
+}
+@mixin nav-item {
+  @extend .nav-item;
+}
+
+@mixin nav-link {
+  @extend .nav-link;
+}
+@mixin tab-pane {
+  @extend .tab-pane;
+}
+@mixin tab-content {
+  @extend .tab-content;
+}
+
+@mixin active {
+  @extend .active;
+}
+
+@mixin fade {
+  @extend .fade;
+}
+
+@mixin show {
+  @extend .show;
+}
+
+@mixin navbar-brand {
+  @extend .navbar-brand;
+}
+
+@mixin navbar($color-name: light, $size: lg) {
+  @if $color-name==light {
+    @extend .navbar-#{$color-name};
+    background-color: $branco;
+  }
+
+  @else {
+    @extend .navbar-#{$color-name};
+    background-color: $dark;
+  }
+
+  @extend .navbar-expand-#{$size};
+  @content;
+}
+
+//extend cards
+@mixin card {
+  @extend .card;
+}
+@mixin card-columns {
+  @extend .card-columns;
+}
+
+@mixin card-body {
+  @extend .card-body;
+}
+
+@mixin card-title {
+  @extend .card-title;
+}
+
+@mixin card-img {
+  @extend .card-img;
+}
+@mixin card-img-top {
+  @extend .card-img-top;
+}
+
+@mixin card-header {
+  @extend .card-header;
+  @content;
+}
+
+@mixin card-footer {
+  @extend .card-footer;
+}
+
+@mixin card-text {
+  @extend .card-text;
+}
+
+@mixin dropdown-item {
+  @extend .dropdown-item;
+}
+
+// [converter] $parent hack
+@mixin responsive-visibility($parent) {
+  #{$parent} {
+    display: block !important;
+  }
+
+  table#{$parent} {
+    display: table !important;
+  }
+
+  tr#{$parent} {
+    display: table-row !important;
+  }
+
+  th#{$parent},
+  td#{$parent} {
+    display: table-cell !important;
+  }
+}
+
+// [converter] $parent hack
+@mixin responsive-invisibility($parent) {
+  #{$parent} {
+    display: none !important;
+  }
+}
+
+@mixin form-group {
+  @extend .form-group;
+}
+
+@mixin form-control {
+  @extend .form-control;
+}
+
+@mixin form-text {
+  @extend .form-text;
+}
+
+@mixin close {
+  @extend .close;
+}
+
+@mixin btn {
+  @extend .btn;
+}
+
+@mixin btn-link {
+  @extend .btn-link;
+}
+
+@mixin btn-block {
+  @extend .btn-block;
+}
+
+@mixin show {
+  display: block;
+  visibility: visible;
+}

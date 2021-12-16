@@ -1,0 +1,301 @@
+@mixin modificacoes_setas() {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 35px 35px;
+    border-radius: 25px;
+}
+
+.navegacao {
+    @include elemento(setas) {
+        @include media-breakpoint-down(md) {
+            display: none;
+        }
+
+        @include modificar(subir) {
+            @include modificacoes_setas;
+            background-image: url('#{$path_img}/botoes/seta-cima.svg');
+            top: 0;
+
+            &:hover {
+                background-image: url('#{$path_img}/botoes/seta-cima-hover.svg');
+            }
+        }
+
+        @include modificar(descer) {
+            @include modificacoes_setas;
+
+            &:hover {
+                background-image: url('#{$path_img}/botoes/seta-baixo-hover.svg');
+            }
+
+            animation: movimento-seta-descer 2s ease;
+            background-image: url('#{$path_img}/botoes/seta-baixo.svg');
+            opacity: 1;
+            bottom: 0;
+
+
+            @keyframes movimento-seta-descer {
+                0% {
+                    bottom: 20px;
+                    opacity: 0;
+                }
+
+                20% {
+                    bottom: -40px;
+                }
+
+                40% {
+                    bottom: -10px;
+                }
+
+                60% {
+                    bottom: -30px;
+                }
+
+                100% {
+                    bottom: 0;
+                    opacity: 1;
+                }
+            }
+        }
+
+        bottom: 180px;
+        position: fixed;
+        right: 25px;
+        z-index: 2;
+        display: block;
+        height: 100px;
+        width: 34px;
+
+        &:before {
+            border: 1px solid $azul-claro;
+            border-radius: 25px;
+            content: "";
+            display: block;
+            height: 10px;
+            position: absolute;
+            right: 12px;
+            top: 45px;
+            width: 10px;
+        }
+
+        &.display-before {
+            &:before {
+                border: 1px solid $azul-claro;
+                border-radius: 25px;
+                content: "";
+                display: block;
+                height: 10px;
+                position: absolute;
+                right: 53px;
+                top: -72px;
+                width: 10px;
+            }
+
+            &.display-before {
+                &:before {
+                    display: none;
+                }
+            }
+        }
+
+        .sumir-seta {
+            left: -400000000px;
+        }
+    }
+}
+
+.ferramentas {
+
+    .background-botoes {
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .before-botoes {
+        background-color: $cinza-claro;
+        content: "";
+        height: 70%;
+        position: absolute;
+        width: 1px;
+    }
+
+    @include elemento(botao) {
+        @include modificar (abrir) {
+            @extend .background-botoes;
+            background-image: url('#{$path_img}/botoes/logo-acessibilidade.png');
+            background-size: 45px, 45px;
+        }
+
+        align-items: center;
+        border-radius: 25px;
+        cursor: pointer;
+        display: flex;
+        height: 40px;
+        position: relative;
+        width: 40px;
+        
+    }
+
+
+    @include elemento(botoes) {
+
+        @include modificar (acessibilidade) {
+            @extend .background-botoes;
+            background-image: url('#{$path_img}/botoes/acessibilidade.png');
+            background-size: 60%;
+
+            &:hover {
+                background-image: url('#{$path_img}/botoes/acessibilidade-hover.png');
+            }
+
+            margin-left: .8rem;
+            margin-right: .2rem;
+        }
+
+        @include modificar (contraste) {
+            @extend .background-botoes;
+            background-image: url('#{$path_img}/botoes/contraste.png');
+            background-size: 70%;
+
+            &:hover {
+                background-image: url('#{$path_img}/botoes/contraste-hover.png');
+            }
+
+            &:before {
+                @extend .before-botoes;
+                left: -4px;
+            }
+
+            margin-left: .2rem;
+            margin-right: .2rem;
+        }
+
+        @include modificar (vision) {
+          @extend .background-botoes;
+          background-image: url('#{$path_img}/botoes/vision.svg');
+          background-size: 100%;
+
+          &:hover {
+              background-image: url('#{$path_img}/botoes/vision-hover.svg');
+          }
+
+          &:before {
+              @extend .before-botoes;
+              left: -4px;
+          }
+
+          margin-left: .2rem;
+          margin-right: .2rem;
+      }
+
+        @include modificar (libras) {
+            @extend .background-botoes;
+            background-image: url('#{$path_img}/botoes/rybena-gesto.png');
+            background-size: 60%;
+
+            &:hover {
+                background-image: url('#{$path_img}/botoes/rybena-gesto-hover.png');
+            }
+
+            &:before {
+                @extend .before-botoes;
+                left: -4px;
+            }
+
+            margin-left: .2rem;
+            margin-right: .2rem;
+        }
+
+        @include modificar (voz) {
+            @extend .background-botoes;
+            background-image: url('#{$path_img}/botoes/rybena-voz.png');
+            background-size: 75%;
+
+            &:hover {
+                background-image: url('#{$path_img}/botoes/rybena-voz-hover.png');
+            }
+
+            &:before {
+                @extend .before-botoes;
+                left: -5px;
+            }
+
+            margin-left: .2rem;
+            margin-right: .2rem;
+        }
+
+        align-content: center;
+        align-items: center;
+        display: flex;
+        margin: 0;
+        transition: width .5s ease;        
+        width: 195px;                
+        padding-inline-start: 0px;
+
+        &.desativado {
+            width: 0;
+
+            .ferramentas__botao {
+                display: none;
+            }
+        }
+    }
+
+    align-content: center;
+    align-items: center;
+    background-color: $branco;
+    border-radius: 30px;
+    bottom: 5%;
+    box-shadow: $theme-shadow;
+    display: flex;
+    overflow: hidden;
+    padding: 3px;
+    position: fixed;
+    right: 1.5%;
+    z-index: 100;
+
+}
+
+.tooltip {
+    @include elemento(acessibilidade) {
+        .tooltip-inner {
+            background-color: $theme-color;
+            border-radius: $theme-radius;
+            font-size: .9em;
+        }
+
+        .arrow::before {
+            border-top-color: $theme-color;
+            border-bottom-color: $theme-color;
+        }
+    }
+
+    @include elemento(setas) {
+        position: relative;
+        @extend .tooltip__acessibilidade;
+
+        .tooltip-inner {
+            background-color: $verde;
+        }
+
+        .arrow::before {
+            border-top-color: $verde;
+            border-bottom-color: $verde;
+        }
+    }
+}
+
+#custom-rybena-div {
+    display: flex;
+    ul {
+        display: flex;
+        padding: 0;
+    }
+}

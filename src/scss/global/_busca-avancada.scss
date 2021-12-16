@@ -1,0 +1,69 @@
+  .je-subtitulos-ba {
+    @include make-col-ready(0);
+
+    @include media-breakpoint-up(sm) {
+      @include make-col(12);
+    }
+
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+  }
+
+  .campos-busca-avancada {
+    @include make-col-ready(0);
+
+    @include media-breakpoint-up(sm) {
+      @include make-col(12);
+    }
+
+    .je-blocos-ba {
+      @include make-col-ready(0);
+
+      @include media-breakpoint-up(sm) {
+        @include make-col(12);
+      }
+    }
+
+    .inputs-resultds {
+      .form-group {
+        @include make-row(0);
+      }
+
+      @include media-breakpoint-up(sm) {
+        @include make-col(12);
+      }
+
+      label {
+        @include media-breakpoint-up(sm) {
+          @include make-col(4);
+        }
+      }
+
+      input {
+        @include media-breakpoint-up(sm) {
+          @include make-col(7);
+        }
+      }
+    }
+  }
+
+  .pesquisar-busca-avancada {
+    @include media-breakpoint-up(sm) {
+      @include make-col(12);
+    }
+
+
+    &.form-inline {
+      align-items: self-start !important;
+    }
+  }
+
+  .form-pesquisa-pag-adv {
+    @include elemento('linha') {
+      @include make-row(0);
+    }
+
+    .form-control {
+      margin-right: 15px;
+    }
+  }

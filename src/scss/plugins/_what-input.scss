@@ -1,0 +1,65 @@
+[data-whatinput="mouse"] .input-display.-mouse,
+[data-whatintent="mouse"] .input-intent.-mouse {
+    background-color: $primeira-cor-bg;
+    color: $brand-primary;
+}
+
+[data-whatinput="keyboard"] .-keyboard {
+    background-color: $primeira-cor-bg;
+    color: $brand-primary;
+}
+
+[data-whatinput="touch"] .-touch {
+    background-color: #fcf8e3;
+    color: #8a6d3b;
+}
+
+
+/* links */
+
+[data-whatinput="keyboard"] a:focus {
+    box-shadow: 0 0 2px 2px $brand-primary;
+    outline: 2px solid $brand-primary;
+}
+
+
+/* form controls */
+
+[data-whatinput="mouse"] .form-control:focus {
+    border-color: $brand-primary;
+    outline: 0;
+    box-shadow: inset 0 1px 1px $brand-primary, 0 0 1px $primeira-cor-bg;
+}
+
+[data-whatinput="keyboard"] .form-control:focus {
+    border-color: $brand-primary;
+    outline: 0;
+    box-shadow: inset 0 1px 1px $brand-primary, 0 0 8px $primeira-cor-bg;
+}
+
+[data-whatinput="touch"] .form-control:focus {
+    border-color: $brand-primary;
+    outline: 0;
+    box-shadow: inset 0 1px 1px $brand-primary, 0 0 8px $primeira-cor-bg;
+}
+
+
+/* Fancybox */
+
+[data-whatinput="mouse"] .fancybox-button:focus {
+    border-color: $brand-primary;
+    outline: 0;
+    box-shadow: inset 0 1px 1px $brand-primary, 0 0 1px $primeira-cor-bg;
+}
+
+[data-whatinput="keyboard"] .fancybox-button:focus {
+    border-color: $brand-primary;
+    outline: 0;
+    box-shadow: inset 0 1px 1px $brand-primary, 0 0 8px $primeira-cor-bg;
+}
+
+[data-whatinput="touch"] .fancybox-button:focus {
+    border-color: $brand-primary;
+    outline: 0;
+    box-shadow: inset 0 1px 1px $brand-primary, 0 0 8px $primeira-cor-bg;
+}

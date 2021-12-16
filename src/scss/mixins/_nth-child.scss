@@ -1,0 +1,16 @@
+@mixin nth-child($selector, $number) {
+    $result: "";
+    $i: $number;
+    @while $i>0 {
+        @if $i==$number {
+            $result: #{$result + $selector};
+        }
+        @else {
+            $result: #{$result + " + " + $selector};
+        }
+        $i: $i - 1;
+    }
+    #{$result} {
+        @content;
+    }
+}

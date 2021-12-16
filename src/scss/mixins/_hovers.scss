@@ -1,0 +1,57 @@
+//tags
+$cor-link: $brand-primary;
+$cor-link-hover: darken($cor-link, 5%);
+$cor-link-active: $cor-link-hover;
+$cor-borda: $primeira-cor-bg;
+$cor-bg: transparent;
+$cor-bg-hover: transparent;
+$cor-bg-active: $cor-bg-hover;
+$border-width: 1px;
+@mixin hoverMenuLateral($bg-color-hover:$cor-bg-hover, $bg-color:$cor-bg, $border-color:$cor-borda) {
+    background-color: $bg-color;
+    >a {
+        border: $border-width solid transparent;
+        background-color: $bg-color;
+        &:hover {
+            border-left: $border-width solid darken(#ccc, 10%);
+            background-color: $bg-color-hover;
+            color: $cor-link;
+            text-decoration: underline;
+        }
+    }
+    &.active a,
+    &.menu-lateral-selecionado a {
+        background-color: $cor-bg-active;
+        color: $cor-link-active;
+        border-left: $border-width solid darken(#ccc, 10%);
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    li {
+        >a {
+            border: $border-width solid transparent;
+            &:hover {
+                border: $border-width solid transparent;
+            }
+        }
+        &.active a,
+        &.submenu-selecionado a {
+            @include insertArrowLeft;
+            border-left: $border-width solid $border-color;
+            &:hover {
+                border-left-width: $border-width;
+            }
+        }
+    }
+}
+
+@mixin insertArrowLeft() {
+    &:before {
+        font-family: $font-icone;
+        content: "\f105";
+        position: relative;
+        left: -15px;
+        top: 15%;
+    }
+}

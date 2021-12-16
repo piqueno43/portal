@@ -1,5 +1,39 @@
-* {
-    background: #000;
-    color: palegreen;
-    border: 1px solid hotpink
-}
+@import "variables/config";
+@import "mixins/mixins";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/print";
+@import "~bootstrap/scss/utilities/embed";
+@import "~bootstrap/scss/utilities/screenreaders";
+@import "~bootstrap/scss/utilities/stretched-link";
+
+@import "global/index";
+@import "global/fonts";
+@import "global/acessibilidade";
+@import "global/topo"; 
+@import "global/menu";
+@import "global/rodape";
+@import "global/modal-servicos-consultas";
+@import "global/busca-avancada";
+@import "global/ferramentas";
+@import "global/abas";
+
+@import "global/print";
+@import "global/cookies";

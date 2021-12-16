@@ -1,0 +1,129 @@
+.cookies {
+  background-color: #1f345d;
+  bottom: 0;
+  color: $branco;
+  font-size: 1.2em;
+  left: 0;
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  position: fixed;
+  width: 100%;
+  z-index: 9999999;
+
+  animation-name: subir-div;
+  animation-duration: 2s;
+
+  @include media-breakpoint-down(xs) {
+    padding: 1em;
+  }
+
+  a {
+    color: $branco;
+    text-decoration: underline;
+    font-weight: bold;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .titulo {
+    @include make-col(12);
+    margin-bottom: 10px;
+
+    h3 {
+      display: flex;
+      align-items: center;
+
+      button {
+        background-color: transparent;
+        border: none;
+      }
+
+      .duvida {
+        color: #fbda5a;
+        border-radius: 100%;
+        border: 1px solid #fbda5a;
+        width: 14px;
+        height: 14px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 9px;
+        margin-left: 10px;
+        position: relative;
+        cursor: pointer;
+
+        .texto-duvida {
+          position: absolute;
+          background-color: #fbda5a;
+          color: #1f345d;
+          font-size: 1.5em;
+          border: 1px solid $branco;
+          padding: .5em;
+          top: -5px;
+          left: 20px;
+          width: 500px;
+          cursor: default;
+          border-radius: 5px;
+
+          @include media-breakpoint-down(sm) {
+            width: 180px;
+          }
+        }
+      }
+    }
+  }
+
+  .texto {
+    @include make-col(9);
+
+    @include media-breakpoint-down(sm) {
+      @include make-col(12);
+    }
+  }
+
+  .botao {
+    @include make-col(3);
+
+    @include media-breakpoint-down(sm) {
+      @include make-col(12);
+
+      button {
+        float: right;
+      }
+    }
+
+    button {
+      background-color: #fbda5a;
+      color: #ad521f;
+    }
+  }
+
+  @keyframes subir-div {
+    0% {
+      bottom: -1000px;
+    }
+
+    100% {
+      bottom: 0px;
+    }
+  }
+
+  @keyframes descer-div {
+    0% {
+      bottom: 0px;
+    }
+
+    100% {
+      bottom: -1000px;
+    }
+  }
+
+  &.fechar-box-cookies {
+    bottom: -1000px;
+
+    animation-name: descer-div;
+    animation-duration: 3s;
+  }
+}

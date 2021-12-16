@@ -1,0 +1,91 @@
+@import "node_modules/bootstrap/scss/print";
+$border-width: 1px;
+
+@if $enable-print-styles {
+    @media print {
+        @include responsive-invisibility(".nao-imprimir");
+
+        @page {
+            size: 8.5in 11in;
+            margin: 1.2cm;
+        }
+
+        .acessibilidade,
+        .rodape,
+        .aviso,
+        .breadcrumb__conteudo_full,
+        .iframe-full iframe,
+        #navegacao-data-noticias,
+        #acessibilidade-rybena,
+        #modal-sugestao-pagina,
+        #voltar-topo a {
+            display: none;
+        }
+
+        #conteudo,
+        #content {
+            @include media-breakpoint-up(xs) {
+                @include make-col(12);
+            }
+
+            @include media-breakpoint-up(sm) {
+                @include make-col(12);
+            }
+
+            @include media-breakpoint-up(md) {
+                @include make-col(12);
+            }
+
+            @include media-breakpoint-up(lg) {
+                @include make-col(12);
+            }
+
+            h2 {
+                text-align: left;
+            }
+
+            #texto-conteudo {
+
+                li.marcador-quadrado,
+                ul.marcadorQuadrado li,
+                li.marcador-ticado,
+                ul.marcadorTicado li {
+                    list-style: none;
+                }
+
+
+
+                p {
+                    font-size: 1rem;
+                }
+
+                a {
+                    text-decoration: none;
+
+                    &.nav-link {
+                        background-color: $branco;
+                        border: none;
+
+                        &:not(.active) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .legislacao-ato {
+            .brasao {
+                @include media-breakpoint-up(xs) {
+                    text-align: left !important;
+                }
+            }
+        }
+
+        .ferramentas,
+        .navegacao__setas {
+            display: none;
+        }
+    }
+
+}

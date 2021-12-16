@@ -1,0 +1,12 @@
+@mixin not($ignorList) {
+    @if (length($ignorList)==1) {
+        $ignorList: nth($ignorList, 1);
+    }
+    $notOutput: '';
+    @each $not in $ignorList {
+        $notOutput: $notOutput+':not(#{$not})';
+    }
+    &#{$notOutput} {
+        @content;
+    }
+}

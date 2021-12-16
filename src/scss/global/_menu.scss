@@ -1,0 +1,472 @@
+$altura-mega-menu: 720px;
+$theme-color-line: $cinza-claro;
+$theme-color-action: $theme-color;
+$transition: all 0.35s ease-in-out;
+$border-size: 5px;
+@mixin seta($size: 16px, $position-y: 95%, $postion-x: center, $padding-right:25px) {
+    background: url("#{$path_img}/menu-seta.png");
+    background-repeat: no-repeat;
+    background-position: $position-y $postion-x;
+    padding-right: $padding-right !important;
+    background-size: $size;
+}
+
+@mixin padding-y($padding-y: 10px) {
+    padding-bottom: $padding-y;
+    padding-top: $padding-y;
+}
+
+@mixin menu-list-group-item {
+    position: relative;
+    display: block;
+    padding: $list-group-item-padding-y $list-group-item-padding-x;
+    // Place the border on the list items and negative margin up for better styling
+    margin-bottom: -$list-group-border-width;
+    color: $list-group-color;
+    background-color: transparent;
+    // border: $list-group-border-width solid $list-group-border-color;
+    &:first-child {
+        @include border-top-radius($list-group-border-radius);
+    }
+    &:last-child {
+        margin-bottom: 0;
+        @include border-bottom-radius($list-group-border-radius);
+    }
+    &.disabled,
+    &:disabled {
+        color: $list-group-disabled-color;
+        pointer-events: none;
+        background-color: $list-group-disabled-bg;
+    }
+    // Include both here for `<a>`s and `<button>`s
+    &:focus,
+    &:hover,
+    &.active {
+        // @include seta;
+        padding-left: 15px;
+        outline: transparent;
+        color: $theme-color-link;
+        border-color: $theme-color-line;
+        box-shadow: none;
+        outline: none;
+        text-decoration: none;
+        font-weight: $font-weight-bold;
+        z-index: 2; // Place active items above their siblings for proper border styling        
+        background-color: $theme-color-line;
+        border-left: {
+            color: $theme-color-secundario;
+            width: $border-size;
+            style: solid;
+        }
+        border-radius: 0%;
+    }
+}
+
+.menu {
+    @include media-breakpoint-only(xs){
+        @include elemento(conteudo) {
+            padding: 0;
+            @include make-col-ready();
+
+        }
+        @include elemento(linha) {
+            @include make-row(0);
+        }
+    }
+    label {
+        font-size: 1rem !important;
+    }
+    .titulo-principal {
+        line-height: 0;
+        margin: 0;
+        padding: 0;
+    }
+    @include navbar() {
+        font-family: $font-family-menu;
+        font-size: 1rem;
+        padding: 0;  
+    }
+    @include elemento('logo') {
+        @include navbar-brand;
+        @include padding-y(3px);
+    }
+    .navbar-nav {
+        margin-left: auto;
+    }
+    @include elemento("item") {
+        @include nav-item;
+        @include media-breakpoint-only(xs) {
+            max-width: 100%;
+            text-align: left;
+        }
+        border-bottom: $border-size / 2 solid $branco;
+        font-weight: 600;
+        min-width: 100px;
+        max-width: 160px;
+        text-align: center;
+        transition: .5s;
+        &:focus,
+        &:hover,
+        &.active {
+            transition: .3s;
+            white-space: initial;
+            .menu__item-link {
+                &:hover {
+                    color: $theme-color !important;
+                    font-weight: bold;
+                    padding-right: 0.522rem;
+                    padding-left: 0.522rem;
+                }
+            }
+            border-bottom-color: $theme-color-secundario;
+        }
+    }
+    @include elemento("item-link") {
+        @include nav-link;
+        padding: inherit;
+        font-size: inherit;
+        text-align: inherit;
+        padding: $list-group-item-padding-y $list-group-item-padding-x;
+        white-space: initial;
+        &:focus {
+            box-shadow: none;
+        }
+    }
+    .navbar-toggler {
+        margin-left: auto;
+    }
+    @include elemento("dropdown") {
+        &.menu__item {
+            position: static;
+        }
+    }
+    .sub-menu {
+        @include elemento('conteudo') {
+            &>.sub-menu__linha>.sub-menu__duas-colunas:last-child {
+                border-left: 1px solid $theme-color-line;
+            }
+        }
+        .menu__item-link+.menu__item-link {
+            white-space: pre-wrap;
+        }
+        &.dropdown-menu {
+            border: none;
+            // border-top: 0 solid $theme-color-line !important;
+            // margin: 0 !important;
+            margin-top: 0;
+            min-height: 0;
+            visibility: hidden;
+            transition: $transition;
+            overflow: hidden;
+            background-color: $branco;
+            width: 100%;
+            &.show {
+                display: block;
+                visibility: visible;
+            }
+        }
+        //colunas    
+        @include elemento("uma-coluna") {
+            @include media-breakpoint-up(md) {
+                @include make-col(12);
+                padding: 0;
+            }
+            @include media-breakpoint-up(lg) {
+                @include make-col(12);
+                .sub-menu_card {
+                    flex-direction: row;
+                }
+                .sub-menu_card-body {
+                    @include make-col(6);
+                }
+                .sub-menu_card-footer {
+                    @include make-col(6);
+                    border-top: none;
+                    padding-top: 50px;
+                    .campanhas-item {
+                        flex-direction: row;
+                        
+                    }
+                }
+                @include padding-y;
+            }
+        }
+        @include elemento("duas-colunas") {
+            @include make-col-ready();
+            @include media-breakpoint-up(md) {
+                @include make-col(12);
+            }
+            @include media-breakpoint-up(lg) {
+                @include make-col(6);
+            }
+            @include padding-y;
+            @include modificar('linha') {
+                .sub-menu__duas-colunas:first-child {
+                    border-left: $border-size / 3 solid $theme-color-line;
+                }
+            }
+        }
+        @include elemento("tres-colunas") {
+            @include media-breakpoint-up(md) {
+                @include make-col(12);
+            }
+            @include media-breakpoint-up(lg) {
+                @include make-col(4);
+            }
+            @include padding-y;
+        }
+        @include elemento("quatro-colunas") {
+            @include media-breakpoint-up(md) {
+                @include make-col(6);
+            }
+            @include media-breakpoint-up(lg) {
+                @include make-col(3);
+            }
+            @include padding-y;
+        }
+        // end colunas
+        @include elemento("item") {
+            @include dropdown-item;
+            padding: 0;
+            white-space: normal;
+            &:hover {
+                background-color: $branco;
+            }
+        }
+        @include modificar('card') {
+            @include card;
+            border: none;
+            .sub-menu__duas-colunas {
+                margin-right: 0;
+                margin-left: 0;
+            }
+        }
+        @include modificar('card-body') {
+            @include card-body;
+            background-color: transparent;
+            padding-bottom: 0;
+        }
+        @include modificar('card-title') {
+            @include card-title;
+            border-bottom: $border-size / 5 solid $theme-color-line;
+            font-size: 1.5rem;
+        }
+        @include modificar('card-footer') {
+            @include card-footer;
+            padding: 0.75rem 1rem;
+            background-color: transparent;
+            border: none;
+        }
+        @include media-breakpoint-down(sm) {
+            display: none;
+        }
+        @include elemento("list-group") {
+            @include list-group(true);
+            &+.sub-menu__list-group {
+                display: block;
+                padding-left: 15px;
+            }
+        }
+        @include elemento("list-group-item") {
+            list-style: none;
+            padding: 0;
+            border-top: $list-group-border-width solid $list-group-border-color;
+            &:first-child {
+                border-top: none;
+            }
+            a {
+                @include menu-list-group-item;
+            }
+            &:hover,
+            &.active {
+                text-decoration: none;
+                cursor: pointer;
+                font-weight: $font-weight-bold;
+            }
+        }
+        .campanhas {
+            display: flex;
+            flex-wrap: wrap;
+            @include elemento("item") {
+                justify-content: flex-start;
+                max-width: 160px;
+                
+                
+                @include media-breakpoint-up(xs) {
+                    flex-direction: column;
+                }
+                @include media-breakpoint-up(lg) {
+                    flex-direction: row;
+                    &:last-child {
+                        padding-right: 0;
+                    }
+                }
+                .figure {
+                    @include elemento('link') {
+                        padding: 0!important;
+                        &:hover {
+                            color: $theme-color-link;
+                            font-weight: $font-weight-bold;
+                        }
+                        .figure-img {
+                            border: $border-size / 2 solid transparent;
+                            border-radius: $radius * 1.9;
+                            box-shadow: $shadow;
+                            &:hover {
+                                border-color: $theme-color-secundario;
+                            }
+                        }
+                    }
+                    .figure-caption{
+                        a {
+                            font-size: 14px;
+                            font-weight: bold;
+                            color: $cinza;
+                            font-family: $font-family-menu;
+                            text-align: left;
+                            padding-left: 0.375rem;
+                            padding-right: 0.375rem;
+                        }
+                    }
+                }
+            }
+        }
+        .mais-conteudo {
+            flex-flow: row wrap;
+            @include elemento("link") {
+                // @include button-outline-variant($theme-color-action, $theme-color-action);
+                .btn {
+                    @include seta();
+                }
+            }
+            .btn {
+                justify-content: flex-end;
+            }
+        }
+    }
+    //end sub-menu
+    .formulario {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        @include make-col-ready();
+        @include media-breakpoint-up(lg) {
+            @include make-col(12);
+            margin: auto;
+        }
+        @include media-breakpoint-only(xs) {
+            small,
+            strong {
+                font-size: 1rem !important;
+            }
+            input#buscaPortal {
+                border-radius: 0!important;                
+                -webkit-text-fill-color: $cinza-escuro;
+                opacity: 1; /* required on iOS */
+                background: transparent;
+                height: 60px; 
+                padding: 0;
+                margin-top: 0;
+            }
+            .form-control {
+                &::placeholder {
+                    
+                    color: $cinza-claro;
+                    font-size: 1.5rem !important;
+                }
+            }
+        }
+        @include elemento('form-group') {
+            @include form-group;
+            width: 100%;
+            text-align: center;
+        }
+        @include elemento('form-control') {
+            @include form-control;
+            height: $input-height-lg;
+            padding: ($input-padding-y-lg * 2) ($input-padding-x-lg * 2);
+            @include font-size($input-font-size-lg * 2);
+            line-height: $input-line-height-lg * 2;
+            // @include border-radius($input-border-radius-lg * 2);
+            text-align: center !important;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            background-color: $branco;
+            font-size: 2.25rem;
+            border-radius: none !important;
+            &::placeholder {
+                color: $cinza-claro;
+                font-size: 2rem !important;
+            }
+            &:focus {
+                box-shadow: none;
+                background-color: $branco;
+                border-bottom-color: $theme-color-action;
+            }
+        }
+        @include elemento('form-text') {
+            @include form-text;
+            font-size: 1.375rem;
+            color: $theme-color-link;
+        }
+        .opcao-pesquisa {
+            padding-top: 15px;
+        }
+    }
+    //end formulario
+    .busca {
+        max-width: 32px;
+        min-width: 32px;
+        &.mobile-search {
+            max-width: 64px;
+            padding: 0 $navbar-padding-x;
+            border: 1px solid $cinza-claro;
+            border-radius: 5px;
+            margin-left: 2px;
+            list-style-type: none !important;
+        }
+        .menu__item-link {
+            position: relative;
+            top: 5px;
+            right: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        &:focus,
+        &:hover {
+            outline: none;
+            border-bottom-color: $branco;
+        }
+        .menu__item-btn {
+            @include btn;
+            @include button-size($btn-padding-y-sm,
+            $btn-padding-x-sm,
+            $btn-font-size-sm,
+            $btn-line-height-sm,
+            $btn-border-radius-sm);
+            padding: .8rem $navbar-padding-y;
+            .fa {
+                color: $theme-color-link;
+                font-size: 1rem;
+            }
+        }
+        @include modificar('fechar') {
+            @include close;
+            font-size: 3rem !important;
+            position: absolute;
+            top: 0;
+            right: 8px;
+            &:focus {
+                outline: none;
+            }
+        }
+        .show {
+            top: 0;
+        }
+        @include elemento('conteudo') {
+            width: 100vw;
+            height: 100vh;
+        }
+    }
+    //end busca
+}
