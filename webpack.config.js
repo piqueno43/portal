@@ -6,9 +6,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin')
+const $ = require('jquery')
+const webpack = require('webpack');
 
 const config = require('./config')
+
 const fileName = name =>
   path.basename(
     name.charAt(0).toUpperCase() +
@@ -44,45 +46,9 @@ const htmlPluginEntries = templateFiles.map(
       subtitle: fileName(template) === 'Index' ? 'Home' : fileName(template),
       filename: `${template.replace('.ejs', '')}.html`,
       template: path.resolve(config.paths.source, `${template}`),
-      favicon: path.resolve(config.paths.source, 'images', 'favicon.ico'),
-      meta: {
-        'theme-color': '#163058',
-        description:
-          'The TSE plays a fundamental role in constructing and developing the Brazilian democracy, in joint action with the Regional Electoral Courts (Tribunais Regionais Eleitorais [TREs]), which are in charge of managing the electoral process in the states and municipalities.',
-        'og:type': { property: 'og:type', content: 'website' },
-        'og:title': { property: 'og:title', content: title },
-        'og:description': {
-          property: 'og:description',
-          content:
-            'The TSE plays a fundamental role in constructing and developing the Brazilian democracy, in joint action with the Regional Electoral Courts (Tribunais Regionais Eleitorais [TREs]), which are in charge of managing the electoral process in the states and municipalities.'
-        },
-        'og:image': {
-          property: 'og:image',
-          content: 'https://english.tse.jus.br/images/og-image.png'
-        },
-        'og:url': {
-          property: 'og:url',
-          content: `https://english.tse.jus.br/${path.basename(template)}`
-        }
-      }
+      favicon: path.resolve(config.paths.source, 'images', 'favicon.ico'),     
     })
 )
-
-const htmlBeautifyPlugin = [
-  new HtmlBeautifyPlugin({
-    config: {
-      html: {
-        end_with_newline: true,
-        indent_size: 2,
-        indent_with_tabs: true,
-        indent_inner_html: true,
-        preserve_newlines: true,
-        unformatted: ['p', 'i', 'b', 'span']
-      }
-    },
-    replace: [' type="text/javascript"']
-  })
-]
 
 module.exports = {
   mode: isDevelopment ? 'development' : 'production',
@@ -95,13 +61,13 @@ module.exports = {
     ]
   },
   entry: {
+    plugins: [
+      path.resolve(config.paths.source, 'scripts', 'plugins.js'),
+      path.resolve(config.paths.source, 'scss', 'plugins.scss'),
+    ],
     global: [
       path.resolve(config.paths.source, 'scripts', 'global.ts'),
       path.resolve(config.paths.source, 'scss', 'global.scss')
-    ],
-    plugins: [
-      path.resolve(config.paths.source, 'scripts', 'plugins.ts'),
-      path.resolve(config.paths.source, 'scss', 'plugins.scss'),
     ],
   },
   output: {
@@ -110,7 +76,7 @@ module.exports = {
     assetModuleFilename: 'assets/[name][ext]'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],   
   },
   devServer: {
     static: {
@@ -121,6 +87,12 @@ module.exports = {
     hot: false
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      Popper: ['popper.js', 'default']
+    }),
     new MiniCssExtractPlugin({
       filename: isDevelopment ? 'css/[name].css' : 'css/[name].min.css'
     }),
