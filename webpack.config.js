@@ -6,33 +6,34 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin')
 
 const config = require('./config')
 const fileName = name =>
   path.basename(
     name.charAt(0).toUpperCase() +
-      name.slice(1).replace('.html', '').replace('-', ' ')
+      name.slice(1).replace('.ejs', '').replace('-', ' ')
   )
 const isDevelopment = process.env.NODE_ENV !== 'production'
 const title = 'Tribunal Superior Eleitoral'
 
 const templateFiles = fs
   .readdirSync(config.paths.source)
-  .filter(file => path.extname(file).toLowerCase() === '.html')
+  .filter(file => path.extname(file).toLowerCase() === '.ejs')
 const htmlPluginEntries = templateFiles.map(
   template =>
     new HTMLWebpackPlugin({
       scriptLoading: 'blocking',
       collapseWhitespace: false,
-      collapseInlineTagWhitespace: true,
+      collapseInlineTagWhitespace: false,
       keepClosingSlash: true,
       conservativeCollapse: true,
       preserveLineBreaks: false,
       removeComments: false,
-      removeTagWhitespace: true,
-      removeEmptyAttributes: true,
-      removeRedundantAttributes: true,
-      removeScriptTypeAttributes: true,
+      removeTagWhitespace: false,
+      removeEmptyAttributes: false,
+      removeRedundantAttributes: false,
+      removeScriptTypeAttributes: false,
       removeStyleLinkTypeAttributes: true,
       useShortDoctype: false,
       inject: true,
@@ -41,8 +42,8 @@ const htmlPluginEntries = templateFiles.map(
       hash: false,
       title: title,
       subtitle: fileName(template) === 'Index' ? 'Home' : fileName(template),
-      filename: template,
-      template: path.resolve(config.paths.source, template),
+      filename: `${template.replace('.ejs', '')}.html`,
+      template: path.resolve(config.paths.source, `${template}`),
       favicon: path.resolve(config.paths.source, 'images', 'favicon.ico'),
       meta: {
         'theme-color': '#163058',
@@ -67,6 +68,22 @@ const htmlPluginEntries = templateFiles.map(
     })
 )
 
+const htmlBeautifyPlugin = [
+  new HtmlBeautifyPlugin({
+    config: {
+      html: {
+        end_with_newline: true,
+        indent_size: 2,
+        indent_with_tabs: true,
+        indent_inner_html: true,
+        preserve_newlines: true,
+        unformatted: ['p', 'i', 'b', 'span']
+      }
+    },
+    replace: [' type="text/javascript"']
+  })
+]
+
 module.exports = {
   mode: isDevelopment ? 'development' : 'production',
   devtool: isDevelopment && 'source-map',
@@ -79,13 +96,13 @@ module.exports = {
   },
   entry: {
     global: [
-      path.resolve(config.paths.source, 'js', 'global.js'),
+      path.resolve(config.paths.source, 'scripts', 'global.ts'),
       path.resolve(config.paths.source, 'scss', 'global.scss')
     ]
   },
   output: {
     path: config.paths.output,
-    filename: isDevelopment ? 'js/[name].js' : 'js/[name].min.js',
+    filename: isDevelopment ? 'scripts/[name].js' : 'js/[name].min.js',
     assetModuleFilename: 'assets/[name][ext]'
   },
   resolve: {
@@ -120,9 +137,22 @@ module.exports = {
     })
   ]
     .concat(htmlPluginEntries)
+    // .concat(htmlBeautifyPlugin)
     .filter(Boolean),
   module: {
     rules: [
+      {
+        test: /\.ejs$/,
+        use: [
+          {
+            loader: 'ejs-webpack-loader',
+            options: {
+              data: { title: 'New Title', someVar: 'hello world' },
+              htmlmin: true
+            }
+          }
+        ]
+      },
       {
         test: /\.((c|sa|sc)ss)$/i,
         use: [
