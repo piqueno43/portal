@@ -43,9 +43,12 @@ const htmlPluginEntries = templateFiles.map(
       excludeChunks: ['partials'],
       hash: false,
       title: title,
+      templateParameters: {
+        myTitle: title,
+      },
       subtitle: fileName(template) === 'Index' ? 'Home' : fileName(template),
       filename: `${template.replace('.ejs', '')}.html`,
-      template: path.resolve(config.paths.source, `${template}`),
+      template: `ejs-webpack-loader!${config.paths.source}/${template}`,
       favicon: path.resolve(config.paths.source, 'images', 'favicon.ico'),     
     })
 )
@@ -62,7 +65,7 @@ module.exports = {
   },
   entry: {
     plugins: [
-      path.resolve(config.paths.source, 'scripts', 'plugins.js'),
+      path.resolve(config.paths.source, 'scripts', 'plugins.ts'),
       path.resolve(config.paths.source, 'scss', 'plugins.scss'),
     ],
     global: [
@@ -78,15 +81,17 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],   
   },
-  devServer: {
-    static: {
-      directory: config.paths.output,
+  devServer: { 
+    // contentBase: !isDevelopment ? config.paths.output : config.paths.source,         
+    static: {                  
+      directory: !isDevelopment ? config.paths.output : config.paths.source,
       publicPath: '/',
-      watch: true
+      watch: true,      
     },
-    hot: false
+    hot: true,        
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -116,19 +121,7 @@ module.exports = {
     // .concat(htmlBeautifyPlugin)
     .filter(Boolean),
   module: {
-    rules: [
-      {
-        test: /\.ejs$/,
-        use: [
-          {
-            loader: 'ejs-webpack-loader',
-            options: {
-              data: { title: 'Tribunal Superior Eleitoral' },
-              htmlmin: true
-            }
-          }
-        ]
-      },
+    rules: [     
       {
         test: /\.((c|sa|sc)ss)$/i,
         use: [
@@ -191,5 +184,5 @@ module.exports = {
       }
     ]
   },
-  target: 'web'
+  target: ['web', 'es5']
 }

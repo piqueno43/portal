@@ -1,16 +1,14 @@
-import 'popper.js';
-import 'bootstrap';
+import Breakpoints from "breakpoints-js";
+import Cookies from "js-cookie";
 
-import Breakpoints from 'breakpoints-js';
-import Cookies from 'js-cookie';
-
+import "popper.js";
+import "bootstrap";
+// initialize breakpoints
 Breakpoints();
 
 (function ($) {
   // ToolTips rodape
-  $(
-    '.rodape [data-toggle="tooltip"], .transparencia [data-toggle="tooltip"], .mapa-acesso-botao'
-  ).tooltip();
+  $('.rodape [data-toggle="tooltip"], .transparencia [data-toggle="tooltip"], .mapa-acesso-botao').tooltip();
 
   // popover click body focus
   if (typeof $.fn.popover === "function") {
@@ -25,10 +23,7 @@ Breakpoints();
 
     var $conteudo = $blocoGestor.find("a").data();
 
-    var $blocoNovo = $("<div/>")
-      .addClass("gestor-sem-formatacao")
-      .appendTo($blocoGestor)
-      .hide();
+    var $blocoNovo = $("<div/>").addClass("gestor-sem-formatacao").appendTo($blocoGestor).hide();
     $blocoNovo.html($conteudo.content);
     $blocoGestor.on("click", "a", function () {
       $(".gestor-sem-formatacao").toggle();
@@ -139,18 +134,12 @@ $(function () {
   // you can do in a chain
   Breakpoints.get("xs").on({
     enter: function () {
-      busca
-        .addClass("mobile-search")
-        .removeClass("no-mobile-search")
-        .insertAfter(botaoMobile);
+      busca.addClass("mobile-search").removeClass("no-mobile-search").insertAfter(botaoMobile);
       $(".no-mobile-search").detach();
     },
     leave: function () {
       var menu = menuPrincipal.find(".navbar-nav > li:last-child");
-      busca
-        .removeClass("mobile-search")
-        .addClass("no-mobile-search")
-        .insertAfter(menu);
+      busca.removeClass("mobile-search").addClass("no-mobile-search").insertAfter(menu);
       $(".mobile-search").detach();
     },
   });
@@ -168,9 +157,7 @@ $(function () {
   var mapaItens = $(".mapa__card-header, .mapa__lista-item");
 
   if (aviso.length) {
-    mapaAcessoBotao
-      .removeClass("btn-outline-amarelo")
-      .addClass("btn-outline-azul");
+    mapaAcessoBotao.removeClass("btn-outline-amarelo").addClass("btn-outline-azul");
   }
 
   mapa.click(function (e) {
@@ -192,14 +179,9 @@ $(function () {
   mapaCollapse.on("show.bs.collapse", function () {
     aviso.hide("fast");
 
-    mapaPesquisaClose
-      .find(".fa")
-      .removeClass("fa-sitemap")
-      .addClass("fa-close");
+    mapaPesquisaClose.find(".fa").removeClass("fa-sitemap").addClass("fa-close");
 
-    mapaAcessoBotao
-      .removeClass("btn-outline-amarelo")
-      .addClass("btn-outline-azul");
+    mapaAcessoBotao.removeClass("btn-outline-amarelo").addClass("btn-outline-azul");
     mapaPesquisaClose.removeClass("fechado").addClass("aberto");
 
     mapaPesquisaForm.removeClass("fechado").addClass("aberto");
@@ -208,18 +190,11 @@ $(function () {
 
   mapaCollapse.on("hide.bs.collapse", function () {
     aviso.show();
-    mapaPesquisaClose
-      .find(".fa")
-      .removeClass("fa-close")
-      .addClass("fa-sitemap");
+    mapaPesquisaClose.find(".fa").removeClass("fa-close").addClass("fa-sitemap");
     if (aviso.length) {
-      mapaAcessoBotao
-        .removeClass("btn-outline-amarelo")
-        .addClass("btn-outline-azul");
+      mapaAcessoBotao.removeClass("btn-outline-amarelo").addClass("btn-outline-azul");
     } else {
-      mapaAcessoBotao
-        .removeClass("btn-outline-azul")
-        .addClass("btn-outline-amarelo");
+      mapaAcessoBotao.removeClass("btn-outline-azul").addClass("btn-outline-amarelo");
     }
 
     mapaPesquisaClose.removeClass("aberto").addClass("fechado");
@@ -227,6 +202,7 @@ $(function () {
     mapaSearch.val("");
   });
 })(jQuery);
+
 (function ($) {
   $('[accesskey="3"]').on("keyup", function () {
     $(".dropdown-menu.sub-menu ").addClass("show").find("#buscaPortal").focus();

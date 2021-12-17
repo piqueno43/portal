@@ -1,0 +1,82 @@
+#breadcrumb {
+    @include make-col-ready(0);
+    @include media-breakpoint-up(xs) {
+        @include make-col(12);
+    }
+    @include media-breakpoint-up(lg) {
+        @include make-col(11);
+    }
+}
+
+.breadcrumb {
+    background-color: transparent;
+    margin-bottom: 0;
+    .fa {
+        color: $cinza;
+        &:hover {
+            color: $theme-color;
+        }
+    }
+    @include elemento(linha) {
+        .imprimir-salvar {
+            list-style-type: none !important;
+            @include make-col-ready(0);
+            @include media-breakpoint-only(xs) {
+                @include make-col(12);
+                @include elemento(link) {
+                    background: gold;
+                    display: none !important;
+                    list-style-type: none !important;
+                }
+            }
+            @include media-breakpoint-up(lg) {
+                @include make-col(1);
+            }
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-left: 0;
+            margin-bottom: 0;
+            @include elemento(link) {
+                display: block;
+                padding: $navbar-padding-y $navbar-padding-x;
+                padding-left: 10px;
+                padding-right: 10px;
+                cursor: pointer;
+                font-size: inherit;
+                border: none;
+                color: $cinza;
+                &:focus,
+                &:hover {
+                    color: $theme-color;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+    @include elemento(conteudo) {
+        @include modificar(full) {
+            background-color: rgba($branco, 0.9);
+            margin-bottom: 15px;
+            border-top: 1px solid $cinza-claro;
+        }
+    }
+    @include item(item) {
+        font-size: 1rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: $cinza;
+        a {
+            color: $cinza;
+            &:hover {
+                font-weight: 400;
+                color: $theme-color;
+            }
+        }
+        &.active {
+            color: $cinza;
+            font-weight: 600;
+        }
+    }
+}
