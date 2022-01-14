@@ -1,0 +1,175 @@
+$arredondamento-borda: 10px;
+$arredondamento-borda-li: 5px;
+$font-pardrao: $font-family-menu;
+$padding-bloco-xs: 10px;
+
+/*Extend - bordas transparentes, menos bottom*/
+
+.border-no-bottom-transparent {
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+
+/*Extend - bordas transparentes, menos bottom*/
+
+.servicos {
+    @include media-breakpoint-down(md) {
+        @include make-col(12);
+        padding-left: $padding-bloco-xs;
+        padding-right: $padding-bloco-xs;
+    }
+    @include media-breakpoint-only(lg) {
+        @include make-col(6);
+        padding-right: 0;
+    }
+    @include media-breakpoint-only(xl) {
+        @include make-col(6);
+        padding-right: 1.5rem;
+    }
+    @include modificar (bloco) {
+        @include make-col(12);
+        background-color: $branco;
+        border-radius: 10px;
+        box-shadow: $shadow;
+    }
+    @include paragrafo;
+    margin-top: 10px;
+    a {
+        color: $cinza;
+        &:hover {
+            color: $cinza;
+        }
+    }
+    @include elemento(nav) {
+        @include modificar (item) {
+            @include media-breakpoint-only(xs) {
+                @include make-col(12);
+            }
+            @include media-breakpoint-up(sm) {
+                @include make-col(6);
+            }
+            margin-left: 0 !important;
+            background: transparent !important;
+        }
+        @include modificar(link) {
+            @include media-breakpoint-only(xs) {
+                text-align: center;
+            }
+            @include media-breakpoint-up(sm) {
+                text-align: left;
+            }
+        }
+        @include media-breakpoint-only(xs) {
+            padding-bottom: 1rem;
+        }
+        .nav-link {
+            &:hover {
+                @extend .border-no-bottom-transparent;
+            }
+            &.active {
+                @extend .border-no-bottom-transparent;
+                background-color: $branco;
+                border-bottom-color: $theme-color-secundario !important;
+                border-top-left-radius: $arredondamento-borda !important;
+                color: $cinza;
+                font-size: 1.1em;
+                font-weight: bold;
+                padding-top: 7.512px;
+                padding-bottom: 13.512px;
+                &:hover {
+                    @extend .border-no-bottom-transparent;
+                }
+            }
+            border-bottom-color: $cinza-claro !important;
+            border-bottom-style: solid;
+            border-bottom-width: 3px !important;
+            color: $cinza !important;
+            padding-top: 15.512px;
+            padding-bottom: 7.512px;
+        }
+        &:after {
+            @include media-breakpoint-up(sm) {
+                background-color: $cinza-claro;
+                content: '';
+                left: 50%;
+                height: 38px;
+                position: absolute;
+                top: 6px;
+                width: 1px;
+            }
+        }
+        border: none;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        position: relative;
+    }
+    @include elemento(lista) {
+        @include make-col-ready(0);
+        @include make-row(0);
+        @include modificar (item) {
+            @include media-breakpoint-only(xs) {
+                @include make-col(12);
+                text-align: center;
+                padding-bottom: 0.5rem;
+                padding-top: 0.5rem;
+            }
+            @include media-breakpoint-up(sm) {
+                @include make-col(6);
+                &:nth-child(1) {
+                    padding-right: .5rem;
+                }
+                &:nth-child(2) {
+                    padding-left: .5rem;
+                }
+                &:nth-child(3) {
+                    padding-right: .5rem;
+                }
+                &:nth-child(4) {
+                    padding-left: .5rem;
+                }
+                &:nth-child(5) {
+                    border-bottom: none;
+                    padding-right: .5rem;
+                }
+                &:nth-child(6) {
+                    border-bottom: none;
+                    padding-left: .4rem;
+                }
+                padding-bottom: 1.35rem;
+                padding-top: 1.35rem;
+            }
+            border-bottom-color: $cinza-claro;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+        }
+        @include modificar (link) {
+            @include media-breakpoint-only(lg) {
+                padding-right: 0;
+                padding-left: .5em;
+            }
+            @include make-row(0);
+            @include make-col(12);
+            @include setaAnimateRight;
+            color: $cinza;
+            align-items: center;
+            background-color: $cinza-claro;
+            border-radius: $arredondamento-borda-li;
+            display: flex;
+            padding-bottom: 1rem;
+            padding-top: 1rem;
+            text-align: left;
+            @keyframes transicao-cor {
+                0% {
+                    background-color: $cinza-claro;
+                }
+                100% {
+                    background-color: $theme-color-secundario;
+                }
+            }
+        }
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+}

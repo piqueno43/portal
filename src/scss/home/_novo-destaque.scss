@@ -1,0 +1,73 @@
+#destaque-tema {
+  margin-top: 15px;
+
+  .destaque-tema {
+    @include item(item) {
+
+      background-color: $cinza-azulado;
+
+      @include media-breakpoint-up(xs) {
+        @include make-col-ready();
+        @include make-col(12);
+
+        &:nth-child(2) {
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+      }
+
+      @include media-breakpoint-up(lg) {
+        @include make-col-ready(10px);
+        @include make-col(4);
+
+        &:nth-child(1) {
+          padding-left: 0;
+        }
+
+        &:nth-child(2) {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+
+        &:nth-child(3) {
+          padding-right: 0;
+        }
+      }
+    }
+
+    @include elemento(card) {
+      @include card;
+      border-radius: $radius;
+      border: 15px solid $branco;
+    }
+
+    @include elemento(card-header) {
+      @include card-header;
+      border-bottom: 1px solid $cinza-claro;
+      padding-top: 20px;
+      padding-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: $branco;
+
+      span {
+        font-size: 22px;
+        font-weight: bold;
+        color: #737272;
+      }
+    }
+
+    @include elemento(list) {
+      @include list-group;
+
+      @include item(item) {
+        @include list-group-item;
+        font-size: 16px;
+        border-color: $cinza-claro;
+        padding: 0.25rem 1rem;
+
+      }
+    }
+  }
+}

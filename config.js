@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  paths: {
+  paths: {    
     source: path.resolve(__dirname, 'src/'),
     output: path.resolve(__dirname, 'dist/')
   },

@@ -1,0 +1,173 @@
+#cards-social-media {
+  @include media-breakpoint-only(xs) {
+    @include make-col(12);
+    padding-left: 12px;
+    padding-right: 12px;
+
+    .card-post {
+      .morecontent {
+        span {
+          display: none;
+        }
+      }
+    }
+
+    h2.titulo-redes-em-alta {
+      font-size: calc(1.3rem + 0.6vw);
+    }
+
+    h3 {
+      font-size: 1.25rem !important;
+      line-height: 1.6rem !important;
+    }
+  }
+  .titulo-redes-em-alta {
+    @include titulo-noticias;
+    color: $theme-color;
+    text-align: center;
+    margin: 30px 0 30px 0;
+  }
+  .cards-social-media__linha {
+    @include make-row();
+  }
+  .cards-conteudo {
+    video {
+      max-width: 100%;
+    }
+    @include media-breakpoint-down(xs) {
+      @include make-col(12);
+      margin-bottom: 40px;
+      .card-footer {
+        background-color: $cinza-claro;
+        border: none;
+      }
+      .leia-mais {
+        border-top: 1px solid $cinza-claro;
+        font-size: 80%;
+        color: $theme-color-link;
+        font-weight: $font-weight-bold;
+      }
+    }
+    @include media-breakpoint-up(sm) {
+      @include make-col(12);
+      margin-bottom: 20px;
+    }
+    @include media-breakpoint-up(md) {
+      @include make-col(3);
+    }
+    @include media-breakpoint-up(lg) {
+      @include make-col(3);
+    }
+    padding: 0 5px 0 5px;
+  }
+  .cards-header {
+    border-bottom: 1px solid $cinza-claro;
+    padding: 0.75rem 0.75rem;
+  }
+  .card {
+    .card-body {
+      @include paragrafo;
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+      padding: 0.6rem 0.75rem;
+      color: $cinza;
+      .card-title {
+        font-weight: 700;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+      }
+    }
+    @include item(post) {
+      padding-top: 0.625rem;
+      padding-bottom: 0.625rem;
+      .card-img-top {
+        border-bottom-left-radius: calc(0.25rem - 1px);
+        border-bottom-right-radius: calc(0.25rem - 1px);
+        object-fit: cover;
+        height: 200px;
+      }
+      time {
+        background: $cinza-claro;
+        font-size: 0.625rem;
+        padding: 5px;
+        border-radius: 20px;
+      }
+      &:nth-child(2) {
+        border-top: 1px solid $cinza-claro;
+        border-bottom: 1px solid $cinza-claro;
+      }
+    }
+    border-radius: $theme-radius;
+    background-color: $branco;
+    .card-text a {
+      @include paragrafo;
+      color: $azul;
+      font-size: 0.875rem;
+      font-weight: bold;
+    }
+    .fa-chevron-circle-right {
+      margin-left: 5px;
+    }
+  }
+  .link-post {
+    font-weight: $font-weight-bold;
+  }
+  // $$card-social-media in _config.scss
+  @each $card-name, $card-color in $card-social-media {
+    .card-#{$card-name} {
+      a {
+        color: $card-color;
+      }
+      .card-header {
+        background: url("#{$path_img}/icon-social-media-#{$card-name}.png")
+          no-repeat
+          left
+          5%
+          top
+          81%;
+      }
+    }
+  }
+  .card-header {
+    color: $cinza;
+    .subtitulo-redes-em-alta {
+      margin: 5px 0 0 45px;
+      font-size: 1rem;
+    }
+  }
+  .card-footer {
+    @extend .card-text;
+    @include make-row(0);
+    @include make-col-ready();
+    justify-content: flex-end;
+    .text-left {
+      @include make-col(5);
+      padding-left: 5px;
+      padding-top: 2px;
+      time {
+        margin-top: 5px;
+        font-size: 0.75rem;
+        color: $cinza;
+      }
+    }
+    .text-right {
+      @include make-col(7);
+      padding-right: 5px;
+      a {
+        padding-right: 5px;
+        margin-bottom: 10px;
+        font-size: 0.75rem;
+        font-weight: bold;
+      }
+    }
+    .morecontent span {
+      display: none;
+    }
+    .morelink {
+      display: block;
+      font-size: 0.8rem;
+      color: $theme-color-link !important;
+      border-top: 1px solid $cinza;
+    }
+  }
+}

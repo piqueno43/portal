@@ -1,0 +1,115 @@
+@mixin filtro($color) {
+    a {
+        background-color: transparent;
+        border: 0;
+    }
+    &:hover {
+        background-color: $color;
+        &::after {
+            border-right: none;
+        }
+        h4 {
+            color: $branco;
+        }
+        img {
+            -ms-filter: contrast(10%) brightness(200%);
+            filter: contrast(10%) brightness(200%);
+        }
+    }
+}
+
+.full-card-titulo {
+    h4,
+    .card-descricao {
+        @include media-breakpoint-up(md) {
+            font-size: 1rem;
+        }
+        @include media-breakpoint-up(lg) {
+            font-size: 1.4rem;
+            font-family: "Merriweather", sans-serif;
+            font-weight: 700;
+        }
+    }
+    a {
+        &:hover {
+            color: $branco;
+        }
+    }
+}
+
+//Full Cards
+.full-cards {
+
+    @include media-breakpoint-only(xs) {
+       
+        
+        
+    }
+
+    .owl-carousel .owl-stage {
+        display: flex;
+    }
+    .owl-carousel .owl-item img {
+        width: auto;
+        height: 100%;
+    }
+    .owl-theme .owl-dot span {
+        background: #ffda59;
+    }
+    .owl-dot {
+        outline: none !important;
+    }
+    padding-top: 1.875rem;
+    .owl-item {
+        &:active {
+            padding-right: 0 !important;
+        }
+        &:hover {
+            background: #1b305a !important;
+        }
+    }
+    .owl-theme .owl-dot.active span {
+        background: #1b305a;
+    }
+    .item {
+        height: 100%;
+        background-color: #ffffff;
+        text-align: center;
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+        &:first-child {
+            &::after {
+                content: "";
+                position: absolute;
+                height: 50%;
+                right: 0;
+                bottom: 25%;
+                top: 25%;
+                border-right: 1px solid $cinza-claro;
+            }
+        }
+        img {
+            width: 5rem;
+            height: 5.125rem;
+            margin: auto;
+        }
+    }
+    .stretched-link {
+        background: none !important;
+        outline: none;
+        box-shadow: none !important;
+        color: $theme-color-text;
+    }
+    .owl-carousel .owl-stage {
+        &:last-child::after {
+            width: 0;
+        }
+    }
+    // $full-cards in _config.scss
+    @each $card-nome,
+    $card-content in $full-cards {
+        .card-#{$card-nome} {
+            @include filtro($card-content);
+        }
+    }
+}

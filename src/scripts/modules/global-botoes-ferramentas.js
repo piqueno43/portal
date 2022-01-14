@@ -1,7 +1,5 @@
 import  tooltip  from 'bootstrap/js/dist/tooltip';
 
-
-
 $(document).ready(function () {
 
   var body = $("body");

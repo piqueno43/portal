@@ -21,17 +21,17 @@
 @import "~bootstrap/scss/utilities/screenreaders";
 @import "~bootstrap/scss/utilities/stretched-link";
 
-@import "global/index";
-@import "global/fonts";
-@import "global/acessibilidade";
-@import "global/topo"; 
-@import "global/menu";
-@import "global/rodape";
-@import "global/modal-servicos-consultas";
-@import "global/busca-avancada";
-@import "global/ferramentas";
-@import "global/abas";
-@import "global/breadcrumb";
+@import "../../global/scss/index";
+@import "../../global/scss/fonts";
+@import "../../global/scss/acessibilidade";
+@import "../../global/scss/topo";
+@import "../../global/scss/menu";
+@import "../../global/scss/rodape";
+@import "../../global/scss/modal-servicos-consultas";
+@import "../../global/scss/busca-avancada";
+@import "../../global/scss/ferramentas";
+@import "../../global/scss/abas";
+@import "../../global/scss/breadcrumb";
 
-@import "global/print";
-@import "global/cookies";
+@import "../../global/scss/print";
+@import "../../global/scss/cookies";

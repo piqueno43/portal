@@ -1,0 +1,125 @@
+$arredondamento-borda: 10px;
+$font-pardrao: $font-family-menu;
+$padding-bloco-xs: 10px;
+
+/*Extend - bordas transparentes, menos bottom*/
+
+.border-no-bottom-transparent {
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+
+/*Extend - bordas transparentes, menos bottom*/
+
+.destaque-temas {
+    @include media-breakpoint-down(md) {
+        @include make-col(12);
+        padding-left: $padding-bloco-xs;
+        padding-right: $padding-bloco-xs;
+    }
+    @include media-breakpoint-only(lg) {
+        @include make-col(6);
+        padding-left: 1rem;
+    }
+    @include media-breakpoint-only(xl) {
+        @include make-col(6);
+        // padding-left: 4rem;
+    }
+    @include paragrafo;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    a {
+        color: $cinza;
+        &:hover {
+            color: $cinza;
+        }
+    }
+    @include elemento (card) {
+        @include modificar (bloco) {
+            border: transparent;
+            border-radius: $arredondamento-borda;
+            box-shadow: $shadow;
+            margin-bottom: .6rem;
+        }
+        @include modificar (bloco-imagem) {
+            @include media-breakpoint-only(xs) {
+                @include make-col(12);
+                padding-bottom: 1rem;
+                padding-top: 2rem;
+            }
+            @include media-breakpoint-up(sm) {
+                @include make-col(4);
+                &:after {
+                    content: "";
+                    height: 90%;
+                    right: 0;
+                    width: 1px;
+                    background-color: $cinza-claro;
+                    position: absolute;
+                }
+            }
+            .destaque-temas__card_imagem {
+                max-width: 54px;
+            }
+            .destaque-temas__card_titulo-imagem {
+                font-weight: 600;
+                font-size: 1em;
+                line-height: 1.3rem;
+                letter-spacing: normal !important;
+                text-align: center;
+                margin-top: .5rem;
+            }
+            align-items: center;
+            color: $cinza;
+            display: flex;
+            flex-direction: column;
+            font-size: 1em;
+            justify-content: center;
+            line-height: 1.1rem;
+            min-height: 117px;
+            position: relative;
+        }
+        @include modificar (texto) {
+            @include media-breakpoint-only(xs) {
+                @include make-col(12);
+                padding-bottom: 2rem;
+                padding-top: 1rem;
+            }
+            @include media-breakpoint-up(sm) {
+                @include make-col(8);
+            }
+            .card-body {
+                padding: 0;
+            }
+            align-items: center;
+            display: flex;
+        }
+    }
+    @include elemento (lista) {
+        @include modificar (item) {
+            @include media-breakpoint-only(xs) {
+                padding-top: .3rem;
+                padding-bottom: .3rem;
+            }
+            @extend .border-no-bottom-transparent;
+            border-bottom-color: $cinza-claro;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            display: list-item;
+            &:last-child {
+                border-bottom-color: transparent;
+            }
+        }
+        @include modificar (link) {
+            @include circulo-amarelo();
+        }
+        @include media-breakpoint-only(lg) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}

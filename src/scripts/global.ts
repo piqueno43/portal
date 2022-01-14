@@ -1,2 +1,2 @@
-import './modules/botoes-ferramentas';
-import './modules/feedback';
+import './modules/global-botoes-ferramentas';
+import './modules/global-feedback';

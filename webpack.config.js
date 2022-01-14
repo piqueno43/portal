@@ -1,12 +1,12 @@
-const path = require('path')
-const fs = require('fs')
-const HTMLWebpackPlugin = require('html-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-const $ = require('jquery')
+const path = require('path');
+const fs = require('fs');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const $ = require('jquery');
 const webpack = require('webpack');
 
 const config = require('./config')
@@ -72,6 +72,10 @@ module.exports = {
       path.resolve(config.paths.source, 'scripts', 'global.ts'),
       path.resolve(config.paths.source, 'scss', 'global.scss')
     ],
+    home: [
+      path.resolve(config.paths.source, 'scripts', 'home.ts'),
+      path.resolve(config.paths.source, 'scss', 'home.scss')
+    ],
   },
   output: {
     path: config.paths.output,
@@ -93,10 +97,11 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
+      '$': "jquery",
+      'jQuery': "jquery",
       'window.jQuery': 'jquery',
-      Popper: ['popper.js', 'default']
+      'Popper': 'popper.js',
+      "Bootstrap": "bootstrap.js"
     }),
     new MiniCssExtractPlugin({
       filename: isDevelopment ? 'css/[name].css' : 'css/[name].min.css'

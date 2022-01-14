@@ -1,0 +1,254 @@
+.redes-sociais {
+  @include elemento("conteudo") {
+    margin-bottom: 15px;
+    // padding-top: $global-padding-top * 2;
+    // padding-bottom: $global-padding-bottom * 2;
+
+    .veiculos-redes {
+      @include make-col-ready(0);
+    }
+
+    @include media-breakpoint-only(xs) {
+      @include make-col(12);
+      padding-left: 12px;
+      padding-right: 12px;
+
+      h2.titulo-redes-sociais {
+        font-size: calc(1.3rem + 0.6vw);
+      }
+    }
+
+    .titulo-redes-sociais {
+      @include titulo-noticias;
+      color: $theme-color;
+      text-align: center;
+      margin: 30px 0 30px 0;
+    }
+
+    .redes {
+      @include elemento("linha") {
+        border-radius: $theme-radius * 2;
+        background: $theme-color-bg-secundario;
+        padding-top: $global-padding-top / 2;
+        padding-bottom: $global-padding-bottom / 2;
+        box-shadow: $theme-shadow;
+        margin: auto;
+
+        @include media-breakpoint-only(xs) {
+          border-radius: $theme-radius;
+
+          .card-titulo {
+            display: none !important;
+          }
+        }
+
+        @include media-breakpoint-up(xs) {
+          font-size: $font-size-sm;
+
+          img {
+            width: auto;
+            height: 46px;
+          }
+        }
+
+        @include media-breakpoint-up(lg) {
+          font-size: $font-size-base;
+
+          img {
+            height: 56px;
+            width: auto;
+          }
+        }
+      }
+
+      &__linha {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex: 0 0 100%;
+      }
+    }
+
+    .rede-card {
+      text-align: center;
+      padding: 0 15px;
+      border-right: 1px solid $cinza-claro;
+      font-size: 1em;
+      position: relative;
+
+      &:first-child:nth-last-child(10),
+      &:first-child:nth-last-child(10)~.rede-card {
+        min-width: calc(100% / 10);
+      }
+
+      &:first-child:nth-last-child(9),
+      &:first-child:nth-last-child(9)~.rede-card {
+        min-width: calc(100% / 9);
+      }
+
+      &:first-child:nth-last-child(8),
+      &:first-child:nth-last-child(8)~.rede-card {
+        min-width: calc(100% / 8);
+      }
+
+      &:first-child:nth-last-child(7),
+      &:first-child:nth-last-child(7)~.rede-card {
+        min-width: calc(100% / 7);
+      }
+
+      &:first-child:nth-last-child(6),
+      &:first-child:nth-last-child(6)~.rede-card {
+        min-width: calc(100% / 6);
+      }
+
+      &:first-child:nth-last-child(5),
+      &:first-child:nth-last-child(5)~.rede-card {
+        min-width: calc(100% / 5);
+      }
+
+      &:first-child:nth-last-child(4),
+      &:first-child:nth-last-child(4)~.rede-card {
+        min-width: calc(100% / 4);
+      }
+
+      &:first-child:nth-last-child(3),
+      &:first-child:nth-last-child(3)~.rede-card {
+        min-width: calc(100% / 3);
+      }
+
+      &:first-child:nth-last-child(2),
+      &:first-child:nth-last-child(2)~.rede-card {
+        min-width: calc(100% / 2);
+      }
+
+      &:first-child:nth-last-child(1) {
+        width: 100%;
+      }
+
+      // &::after {
+      //   content: "";
+      //   position: absolute;
+      //   right: 0;
+      //   top: 10px;
+      //   background-color: $cinza-claro;
+      //   width: 1px;
+      //   height: 80px;
+      // }
+
+      // @include media-breakpoint-up(xs){
+      //   min-width: 80px;        
+      // }
+
+      // @include media-breakpoint-up(sm){             
+      //     min-width: 80px;                  
+      //     &:nth-child(1),
+      //     &:nth-child(2),
+      //     &:nth-child(3),
+      //     &:nth-child(4) {          
+      //       min-width: 50%;          
+      //     }
+
+      // }
+      // @include media-breakpoint-up(sm){             
+      //     min-width: 100px;                  
+      //     &:nth-child(1),
+      //     &:nth-child(2),
+      //     &:nth-child(3),
+      //     &:nth-child(4) {          
+      //       min-width: 33.33%;          
+      //     }
+      // }
+
+      // @include media-breakpoint-up(md) {
+      //   min-width: 120px;
+      //   &:nth-child(1),
+      //   &:nth-child(2),
+      //   &:nth-child(3),
+      //   &:nth-child(4) {          
+      //     min-width: 25%;          
+      //   }
+
+      // }
+
+      // @include media-breakpoint-up(lg){
+      //   min-width: 135px;
+      //   &:nth-child(1),
+      //   &:nth-child(2),
+      //   &:nth-child(3),
+      //   &:nth-child(4) {          
+      //     min-width: 12.5%;          
+      //   }
+      // }
+
+      &:last-child {
+        border-right: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: $cinza-escuro;
+
+        &:hover {
+          font-weight: $font-weight-bold;
+        }
+      }
+
+      .card-titulo {
+        display: block;
+        padding-top: $global-padding-top / 2;
+      }
+    }
+  }
+
+  .nav-item {
+    margin-bottom: 15px;
+
+    @include media-breakpoint-down(xs) {
+      flex: inherit !important;
+      margin-right: 5px;
+    }
+  }
+
+  .nav {
+    @include media-breakpoint-down(xs) {
+      justify-content: center;
+    }
+  }
+}
+
+// Ajuste dos botões leia mais dos cards REDES SOCIAIS
+.btn-instagram {
+  color: #ec22a1;
+  background: #fcf2fb;
+  border: 1px solid #fcf2fb;
+
+  &:hover {
+    color: #fcf2fb;
+    background: #ec22a1;
+    border: 1px solid #ec22a1;
+  }
+}
+
+.btn-facebook {
+  color: #675ddc;
+  background: #dfe5f0;
+  border: 1px solid #dfe5f0;
+
+  &:hover {
+    color: #dfe5f0;
+    background: #675ddc;
+    border: 1px solid #675ddc;
+  }
+}
+
+.btn-youtube {
+  color: #ed1e24;
+  background: #fde8e8;
+  border: 1px solid #fde8e8;
+
+  &:hover {
+    color: #dfe5f0;
+    background: #ed1e24;
+    border: 1px solid #ed1e24;
+  }
+}

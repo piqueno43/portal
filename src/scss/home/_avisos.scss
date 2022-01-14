@@ -1,0 +1,16 @@
+#home-avisos {
+#avisos {
+    background-color: $gray-lighter;
+
+    .aviso {
+        @include make-col-ready();
+        @include media-breakpoint-up(xs) {
+            @include make-col(12);
+        }
+
+        padding-top: $global-padding-top;
+        padding-bottom: $global-padding-bottom;
+        text-align: center;
+    }
+}
+}

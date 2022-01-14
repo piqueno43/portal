@@ -1,0 +1,35 @@
+.dje {
+
+    @include item(formulario) {
+        @include make-col-ready();
+
+        @include media-breakpoint-up(lg) {
+            @include make-col(6);
+        }
+
+        #dje-form {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+        }
+    }
+
+    @include item(materias) {
+        @include make-col-ready();
+
+        @include media-breakpoint-up(sm) {
+            @include make-col(12);
+            max-width: map-get($grid-breakpoints, md);
+            margin: 0 auto;
+        }
+        .btn {
+            float: right;
+        }
+    }
+
+    @include item(titulo) {
+        @include paragrafo;
+    }
+
+    @include alerta('dje-alerta');
+}

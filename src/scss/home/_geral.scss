@@ -1,0 +1,40 @@
+#home-destaques,
+#home-servicos,
+#noticias,
+.consultas,
+.mapa-site-conteudo,
+.servicos-mais-acessados {
+    a {
+        color: $link-color-home;
+        &:hover {
+            color: $link-hover-color-home;
+        }
+    }
+    label {
+        font-weight: normal;
+    }
+    .active {
+        a {
+            font-weight: normal;
+            color: $gray-darker;
+        }
+    }
+}
+
+[class^="home-"],
+[id^="home-"] {
+    .titulo-padrao {
+        font-size: $font-size-lg - 1;
+    }
+}
+
+.conteudo-principal {
+    padding-bottom: $global-padding-bottom;
+}
+
+#resposta-situacao-eleitoral,
+#resposta-local-votacao {
+    .btn {
+        float: right;
+    }
+}
