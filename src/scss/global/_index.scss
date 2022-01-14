@@ -1,5 +1,4 @@
-@each $color,
-$value in $theme-colors {
+@each $color, $value in $theme-colors {
   @include bg-variant('[class*="bg-#{$color}"]', $value, true);
 }
 
@@ -9,55 +8,54 @@ $value in $theme-colors {
   text-rendering: optimizeLegibility;
 }
 
-[class*='__linha'] {
+[class*="__linha"] {
   @include make-row();
 }
 
-[class*='__conteudo'] {
+[class*="__conteudo"] {
   @include make-container();
   @include make-container-max-widths();
 }
 
-[class*='__conteudo_full'] {
+[class*="__conteudo_full"] {
   @include make-container();
 }
 
-[class*='__media'] {
+[class*="__media"] {
   display: flex;
   align-items: flex-start;
 }
 
-[class*='__media-body'] {
+[class*="__media-body"] {
   flex: 1;
 }
 
 //modificadores
-[class*='_oculto'] {
+[class*="_oculto"] {
   @include sr-only();
   @include sr-only-focusable();
   color: $branco;
 }
 
-[class*='_botao'],
-[class*='_button'],
-[class*='_link'] {
+[class*="_botao"],
+[class*="_button"],
+[class*="_link"] {
   @extend .btn;
 }
 
-[class*='_lista'] {
+[class*="_lista"] {
   @extend .list-inline;
 }
 
-[class*='_lista_horizontal'] {
+[class*="_lista_horizontal"] {
   @extend .list-group-horizontal;
 }
 
-[class*='_card-text'] {
+[class*="_card-text"] {
   @include titulo-noticias;
   font-size: 1rem;
   line-height: 1.25rem;
-  text-shadow: 1px 1px 2px $black, 0 0 1em $theme-color-bg,
-    0 0 0.2em $theme-color-bg;
+  text-shadow: 1px 1px 2px $black, 0 0 1em $theme-color-bg, 0 0 0.2em $theme-color-bg;
   letter-spacing: 0.1rem;
 }
 
@@ -65,13 +63,12 @@ $value in $theme-colors {
   @include lista-grupo;
   list-style-type: none;
 
-  >li {
+  > li {
     display: block !important;
   }
 }
 
 .icone {
-
   li:before,
   p:before,
   .bt-mais-acessados:before {
@@ -83,7 +80,7 @@ $value in $theme-colors {
 
   &.icone-download {
     li:before {
-      content: '\f019';
+      content: "\f019";
       color: $theme-color;
     }
   }
@@ -135,7 +132,6 @@ $value in $theme-colors {
 }
 
 @include media-breakpoint-up(xs) {
-
   .destaques-itens,
   .consulta-item {
     box-shadow: 8px 8px 10px -7px rgba(0, 0, 0, 0.34);
@@ -149,7 +145,7 @@ $value in $theme-colors {
 
   &::after {
     transition: 0.2s ease-out, background 2s ease-in;
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -161,7 +157,7 @@ $value in $theme-colors {
   }
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 50%;
     top: 50%;
@@ -181,8 +177,7 @@ $value in $theme-colors {
     }
   }
 
-  @each $icone-nome,
-  $icone-content in $icones-destaques {
+  @each $icone-nome, $icone-content in $icones-destaques {
     &.je-icone-#{$icone-nome} {
       &::before {
         content: $icone-content;
@@ -195,8 +190,7 @@ $value in $theme-colors {
   }
 }
 
-@each $icone-nome,
-$icone-content in $icones-home {
+@each $icone-nome, $icone-content in $icones-home {
   .icon-#{$icone-nome} {
     &::before {
       content: $icone-content;
