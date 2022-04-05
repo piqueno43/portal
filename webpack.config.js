@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-const $ = require('jquery')
+const $ = require('jquery');
 const webpack = require('webpack');
 
 const config = require('./config')
@@ -49,7 +49,7 @@ const htmlPluginEntries = templateFiles.map(
       subtitle: fileName(template) === 'Index' ? 'Home' : fileName(template),
       filename: `${template.replace('.ejs', '')}.html`,
       template: `ejs-webpack-loader!${config.paths.source}/${template}`,
-      favicon: path.resolve(config.paths.source, 'images', 'favicon.ico'),     
+      favicon: path.resolve(config.paths.source, 'images', 'favicon.ico'),
     })
 )
 
@@ -79,16 +79,16 @@ module.exports = {
     assetModuleFilename: 'assets/[name][ext]'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],   
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
-  devServer: { 
-    // contentBase: !isDevelopment ? config.paths.output : config.paths.source,         
-    static: {                  
+  devServer: {
+    // contentBase: !isDevelopment ? config.paths.output : config.paths.source,
+    static: {
       directory: !isDevelopment ? config.paths.output : config.paths.source,
       publicPath: '/',
-      watch: true,      
+      watch: true,
     },
-    hot: true,        
+    hot: true,
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -116,12 +116,11 @@ module.exports = {
       protectWebpackAssets: false,
       cleanOnceBeforeBuildPatterns: ['**/*', '!stats.json', '*.LICENSE.txt']
     })
-  ]
-    .concat(htmlPluginEntries)
+  ].concat(htmlPluginEntries)
     // .concat(htmlBeautifyPlugin)
     .filter(Boolean),
   module: {
-    rules: [     
+    rules: [
       {
         test: /\.((c|sa|sc)ss)$/i,
         use: [

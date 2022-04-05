@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
-  <body class="site-tse">    
-    <%- require('ejs-webpack-loader!./template/header/index.ejs')() %>  
-    <%- require('ejs-webpack-loader!./template/footer/index.ejs')() %>    
+  <body class="site-tse">
+    <%- require('ejs-webpack-loader!./template/header/index.ejs')() %>
+    <%- require('ejs-webpack-loader!./template/content/index.ejs')() %>
+    <%- require('ejs-webpack-loader!./template/footer/index.ejs')() %>
   </body>
 </html>
